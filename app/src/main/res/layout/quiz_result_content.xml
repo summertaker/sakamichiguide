@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/white"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:showIn="@layout/quiz_result_activity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_margin="10dp"
+        android:gravity="center_horizontal"
+        android:orientation="vertical"
+        android:padding="30dp">
+
+        <TextView
+            android:id="@+id/tvTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/quiz_result"
+            android:textColor="#555"
+            android:textSize="24sp"
+            android:textStyle="bold" />
+
+        <View
+            android:layout_width="230dp"
+            android:layout_height="1dp"
+            android:layout_marginBottom="15dp"
+            android:layout_marginTop="15dp"
+            android:background="#d1d1d1" />
+
+        <TextView
+            android:id="@+id/tvInfo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="20dp"
+            android:text="@string/blank"
+            android:textColor="#555"
+            android:textSize="16sp"
+            android:textStyle="italic" />
+
+        <com.github.mikephil.charting.charts.PieChart
+            android:id="@+id/pieChart1"
+            android:layout_width="240dp"
+            android:layout_height="240dp"
+            android:visibility="gone" />
+
+        <ImageView
+            android:id="@+id/ivZero"
+            android:layout_width="200dp"
+            android:layout_height="200dp"
+            android:contentDescription="@string/blank"
+            android:src="@drawable/zero_percent"
+            android:visibility="gone"/>
+
+        <ImageView
+            android:id="@+id/ivHundred"
+            android:layout_width="225dp"
+            android:layout_height="225dp"
+            android:contentDescription="@string/blank"
+            android:src="@drawable/one_hundred_percent_badge_blue"
+            android:visibility="gone"/>
+
+        <TextView
+            android:id="@+id/tvSubtitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="25dp"
+            android:text="@string/blank"
+            android:textColor="#777"
+            android:textSize="13sp" />
+
+    </LinearLayout>
+
+    <!--<LinearLayout-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:layout_alignParentBottom="true"-->
+    <!--android:orientation="vertical"-->
+    <!--android:padding="20dp">-->
+
+    <!--<Button-->
+    <!--android:id="@+id/btFinish"-->
+    <!--style="@style/SuccessButton"-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:text="@string/finish" />-->
+    <!--</LinearLayout>-->
+</RelativeLayout>

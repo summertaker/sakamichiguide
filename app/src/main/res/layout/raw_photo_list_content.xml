@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/card_background"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:context="com.summertaker.sakamichiguide.rawphoto.RawPhotoListActivity"
+    tools:showIn="@layout/raw_photo_list_activity">
+
+    <ProgressBar
+        android:id="@+id/pbLoading"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="80dp"
+        android:background="@drawable/progress_bar_circle" />
+
+    <ListView
+        android:id="@+id/listView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:clipToPadding="false"
+        android:divider="@color/transparent"
+        android:dividerHeight="10dp"
+        android:drawSelectorOnTop="true"
+        android:listSelector="@drawable/selector_transparent"
+        android:scrollbarStyle="outsideOverlay" />
+
+    <!--<LinearLayout
+        android:id="@+id/loLoadingMore"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:background="#444"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:paddingBottom="10dp"
+        android:paddingEnd="10dp"
+        android:paddingStart="10dp"
+        android:paddingTop="10dp"
+        android:visibility="gone">
+
+        <ProgressBar
+            android:id="@+id/pbLoadingMore"
+            style="?android:attr/progressBarStyleSmall"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/progress_bar_circle_dark" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:text="@string/loading"
+            android:textColor="#fff176" />
+
+    </LinearLayout>-->
+
+</RelativeLayout>
+
+

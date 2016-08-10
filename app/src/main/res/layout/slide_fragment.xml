@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/card_background"
+    android:gravity="center_horizontal"
+    android:orientation="vertical">
+
+    <ProgressBar
+        android:id="@+id/pbPictureLoading"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="80dp"
+        android:background="@drawable/progress_bar_circle" />
+
+    <RelativeLayout
+        android:id="@+id/loContent"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#fff"
+        android:visibility="gone">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:gravity="center_horizontal"
+            android:orientation="vertical">
+
+            <!-- 사진: 고정 사이즈 (테두리) -->
+            <ImageView
+                android:id="@+id/ivPictureBordered"
+                android:layout_width="200dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="80dp"
+                android:adjustViewBounds="true"
+                android:background="@drawable/polaroid"
+                android:contentDescription="@string/blank"
+                android:padding="8dp"
+                android:visibility="gone" />
+
+            <!-- 사진: 고정 사이즈 -->
+            <ImageView
+                android:id="@+id/ivPictureFixed"
+                android:layout_width="312dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="35dp"
+                android:adjustViewBounds="true"
+                android:contentDescription="@string/blank"
+                android:visibility="gone" />
+
+            <!-- 사진: 꽉 찬 사이즈 -->
+            <ImageView
+                android:id="@+id/ivPictureFull"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:adjustViewBounds="true"
+                android:contentDescription="@string/blank"
+                android:visibility="gone" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:background="#fff"
+            android:gravity="center_horizontal"
+            android:orientation="vertical"
+            android:paddingBottom="20dp"
+            android:paddingEnd="15dp"
+            android:paddingStart="15dp"
+            android:paddingTop="15dp">
+
+            <!-- 일본어 이름 -->
+            <TextView
+                android:id="@+id/tvName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="5dp"
+                android:gravity="center_horizontal"
+                android:text="@string/member_name"
+                android:textColor="@color/black"
+                android:textSize="26sp" />
+
+            <!--가로선-->
+            <!--<View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginBottom="10dp"
+                android:layout_marginEnd="30dp"
+                android:layout_marginStart="30dp"
+                android:layout_marginTop="15dp"
+                android:background="#ccc" />-->
+
+            <!-- 언어별 이름 -->
+            <TextView
+                android:id="@+id/tvLocaleName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="5dp"
+                android:gravity="center_horizontal"
+                android:textColor="@color/dark_sea_green"
+                android:textSize="18sp"
+                android:visibility="gone" />
+
+            <!-- Info -->
+            <TextView
+                android:id="@+id/tvInfo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/dark_gray"
+                android:textSize="16sp"
+                android:textStyle="italic" />
+
+            <!--Indicator-->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:gravity="center_horizontal"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:id="@+id/ivIndicator1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:contentDescription="@string/blank"
+                    android:src="@drawable/ic_dot_gray" />
+
+                <ImageView
+                    android:id="@+id/ivIndicator2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:contentDescription="@string/blank"
+                    android:src="@drawable/ic_dot_gray" />
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </RelativeLayout>
+
+</LinearLayout>

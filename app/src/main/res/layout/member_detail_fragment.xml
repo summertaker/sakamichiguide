@@ -1,0 +1,119 @@
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/white"
+    tools:mContext="com.summertaker.sakamichiguide.member.MemberDetailActivity$PlaceholderFragment">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+        android:orientation="vertical">
+
+        <!-- 사진: 고정 사이즈 (테두리) -->
+        <ImageView
+            android:id="@+id/ivPictureBordered"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"
+            android:adjustViewBounds="true"
+            android:background="@drawable/polaroid"
+            android:contentDescription="@string/blank"
+            android:padding="8dp"
+            android:visibility="gone" />
+
+        <!-- 사진: 고정 사이즈 -->
+        <ImageView
+            android:id="@+id/ivPictureFixed"
+            android:layout_width="250dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:adjustViewBounds="true"
+            android:contentDescription="@string/blank"
+            android:padding="5dp"
+            android:visibility="gone" />
+
+        <!-- 사진: 꽉 찬 사이즈 -->
+        <ImageView
+            android:id="@+id/ivPictureFull"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:adjustViewBounds="true"
+            android:contentDescription="@string/blank"
+            android:scaleType="fitCenter"
+            android:visibility="gone" />
+
+        <ProgressBar
+            android:id="@+id/pbLoading"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="80dp"
+            android:layout_marginTop="80dp"
+            android:background="@drawable/progress_bar_circle" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:clipToPadding="true"
+            android:gravity="center_horizontal"
+            android:orientation="vertical"
+            android:paddingBottom="30dp"
+            android:paddingLeft="20dp"
+            android:paddingRight="20dp"
+            android:paddingTop="20dp">
+
+            <!-- 이름 -->
+            <TextView
+                android:id="@+id/tvName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_horizontal"
+                android:textColor="@color/black"
+                android:textSize="26sp" />
+
+            <!-- 이름2 -->
+            <TextView
+                android:id="@+id/tvSubname"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:gravity="center_horizontal"
+                android:textColor="@color/green"
+                android:textSize="18sp"
+                android:visibility="gone" />
+
+            <!-- 오시멘 버튼 -->
+            <Button
+                android:id="@+id/btFollow"
+                style="@style/DefaultMiniButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:text="@string/oshimen"
+                android:visibility="gone" />
+
+            <!-- 오시멘 버튼 -->
+            <Button
+                android:id="@+id/btFollowing"
+                style="@style/DangerMiniButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:text="@string/oshimen"
+                android:visibility="gone" />
+
+            <TextView
+                android:id="@+id/tvInfo"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:gravity="center_horizontal"
+                android:lineSpacingExtra="5dp"
+                android:textColor="#555555"
+                android:visibility="gone" />
+        </LinearLayout>
+
+    </LinearLayout>
+
+</ScrollView>

@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    card_view:cardCornerRadius="@dimen/card_corner_radius"
+    card_view:cardElevation="@dimen/card_elevation">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:paddingBottom="@dimen/listview_item_padding_vertical"
+        android:paddingEnd="@dimen/listview_item_padding_horizontal"
+        android:paddingStart="@dimen/listview_item_padding_horizontal"
+        android:paddingTop="@dimen/listview_item_padding_vertical">
+
+        <TextView
+            android:id="@+id/tvName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/black_gray"
+            android:text="@string/blank" />
+
+        <TextView
+            android:id="@+id/tvLocaleName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="2dp"
+            android:text="@string/blank"
+            android:textColor="@color/blue" />
+
+        <TextView
+            android:id="@+id/tvGeneration"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/blank"
+            android:textColor="@color/dark_sea_green" />
+
+        <!--총감독-->
+        <TextView
+            android:id="@+id/tvGeneralManager"
+            style="@style/PrimaryLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="5dp"
+            android:paddingBottom="4dp"
+            android:paddingEnd="5dp"
+            android:paddingStart="5dp"
+            android:paddingTop="3dp"
+            android:text="@string/general_manager"
+            android:visibility="gone" />
+
+        <!--그룹 캡틴-->
+        <TextView
+            android:id="@+id/tvGeneralCaptain"
+            style="@style/PrimaryLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="5dp"
+            android:paddingBottom="4dp"
+            android:paddingEnd="5dp"
+            android:paddingStart="5dp"
+            android:paddingTop="3dp"
+            android:text="@string/general_captain"
+            android:visibility="gone" />
+
+        <!--지배인-->
+        <TextView
+            android:id="@+id/tvManager"
+            style="@style/InfoLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="5dp"
+            android:paddingBottom="4dp"
+            android:paddingEnd="5dp"
+            android:paddingStart="5dp"
+            android:paddingTop="3dp"
+            android:text="@string/manager"
+            android:visibility="gone" />
+
+        <!--캡틴,리더-->
+        <TextView
+            android:id="@+id/tvCaptain"
+            style="@style/DangerLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="5dp"
+            android:paddingBottom="4dp"
+            android:paddingEnd="5dp"
+            android:paddingStart="5dp"
+            android:paddingTop="3dp"
+            android:text="@string/captain"
+            android:visibility="gone" />
+
+        <!--부캡틴,부리더-->
+        <TextView
+            android:id="@+id/tvViceCaptain"
+            style="@style/WarningLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="5dp"
+            android:paddingBottom="4dp"
+            android:paddingEnd="5dp"
+            android:paddingStart="5dp"
+            android:paddingTop="3dp"
+            android:text="@string/vice_captain"
+            android:visibility="gone" />
+
+        <!--겸임-->
+        <TextView
+            android:id="@+id/tvConcurrentPosition"
+            style="@style/SuccessLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="5dp"
+            android:paddingBottom="4dp"
+            android:paddingEnd="5dp"
+            android:paddingStart="5dp"
+            android:paddingTop="3dp"
+            android:text="@string/concurrent_position"
+            android:visibility="gone" />
+
+    </LinearLayout>
+
+</android.support.v7.widget.CardView>

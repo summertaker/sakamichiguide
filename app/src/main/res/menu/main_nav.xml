@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <!--<group
+        android:groupId="@+groupId/grpCafe"
+        android:checkableBehavior="single">
+        <item android:title="@string/naver_cafe">
+            <menu>
+                <item
+                    android:groupId="@+groupId/navAkb48Cafe"
+                    android:icon="@drawable/ic_local_cafe_black_24dp"
+                    android:title="@string/akb48" />
+                <item
+                    android:groupId="@+groupId/navNogizaka46Cafe"
+                    android:icon="@drawable/ic_local_cafe_black_24dp"
+                    android:title="@string/nogizaka46" />
+            </menu>
+        </item>
+    </group>-->
+
+    <!--<group
+        android:id="@+id/grpAbout"
+        android:checkableBehavior="single">
+        <item android:title="@string/about">
+            <menu>
+                <item
+                    android:id="@+id/navAbout"
+                    android:icon="@drawable/ic_info_black_24dp"
+                    android:title="@string/about_akb48_guide" />
+            </menu>
+        </item>
+    </group>-->
+
+    <!--<group android:groupId="@+groupId/grpMember" android:checkableBehavior="single">-->
+    <!--<item-->
+    <!--android:groupId="@+groupId/nav_theater"-->
+    <!--android:icon="@drawable/ic_map_black_24dp"-->
+    <!--android:title="@string/theater" />-->
+    <!--<item-->
+    <!--android:groupId="@+groupId/nav_gallery"-->
+    <!--android:icon="@drawable/ic_menu_gallery"-->
+    <!--android:title="Gallery" />-->
+    <!--<item-->
+    <!--android:groupId="@+groupId/nav_slideshow"-->
+    <!--android:icon="@drawable/ic_menu_slideshow"-->
+    <!--android:title="Slideshow" />-->
+    <!--<item-->
+    <!--android:groupId="@+groupId/nav_manage"-->
+    <!--android:icon="@drawable/ic_menu_manage"-->
+    <!--android:title="Tools" />-->
+    <!--</group>-->
+
+    <group> <!-- android:checkableBehavior="single">-->
+        <!--<item
+            android:id="@+id/navSettings"
+            android:icon="@drawable/ic_settings_black_24dp"
+            android:title="@string/setting" />-->
+        <item
+            android:id="@+id/navAbout"
+            android:icon="@drawable/ic_info_black_24dp"
+            android:title="@string/about" />
+    </group>
+
+</menu>

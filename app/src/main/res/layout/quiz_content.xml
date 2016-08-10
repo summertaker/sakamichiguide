@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/loContent"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/card_background"
+    android:orientation="vertical"
+    android:visibility="gone">
+
+    <android.support.v7.widget.CardView xmlns:card_view="http://schemas.android.com/apk/res-auto"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_margin="@dimen/activity_padding"
+        android:layout_weight="1"
+        card_view:cardCornerRadius="@dimen/card_corner_radius"
+        card_view:cardElevation="@dimen/card_elevation">
+
+        <RelativeLayout
+            android:id="@+id/loWithPicture"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:visibility="gone">
+
+            <ProgressBar
+                android:id="@+id/pbPictureLoading"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/progress_bar_circle" />
+
+            <!-- 사진: 고정 사이즈 (테두리) -->
+            <ImageView
+                android:id="@+id/ivPictureBordered"
+                android:layout_width="216dp"
+                android:layout_height="wrap_content"
+                android:adjustViewBounds="true"
+                android:background="@drawable/polaroid"
+                android:contentDescription="@string/blank"
+                android:padding="8dp"
+                android:scaleType="fitCenter"
+                android:visibility="gone" />
+
+            <!-- 사진: 고정 사이즈 -->
+            <ImageView
+                android:id="@+id/ivPictureFixed"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:adjustViewBounds="true"
+                android:contentDescription="@string/blank"
+                android:scaleType="fitCenter"
+                android:visibility="gone" />
+
+            <!-- 사진: 꽉 찬 사이즈 -->
+            <ImageView
+                android:id="@+id/ivPictureFull"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:adjustViewBounds="true"
+                android:contentDescription="@string/blank"
+                android:scaleType="centerCrop"
+                android:visibility="gone" />
+
+        </RelativeLayout>
+
+        <LinearLayout
+            android:id="@+id/loWithoutPicture"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:padding="20dp"
+            android:visibility="gone">
+
+            <!-- 이름 -->
+            <TextView
+                android:id="@+id/tvNameWithoutPicture"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_horizontal"
+                android:text="@string/blank"
+                android:textColor="@color/black"
+                android:textSize="40sp" />
+
+            <!--가로선-->
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginBottom="15dp"
+                android:layout_marginEnd="45dp"
+                android:layout_marginStart="45dp"
+                android:layout_marginTop="15dp"
+                android:background="#ccc" />
+
+            <!-- Group -->
+            <TextView
+                android:id="@+id/tvInfoWithoutPicture"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_horizontal"
+                android:textColor="@color/dark_gray"
+                android:textSize="18sp"
+                android:textStyle="italic" />
+
+        </LinearLayout>
+
+    </android.support.v7.widget.CardView>
+
+    <LinearLayout
+        android:id="@+id/loControl"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:padding="@dimen/activity_padding">
+
+        <TextView
+            android:id="@+id/tvNameWithPicture"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="13dp"
+            android:text="@string/blank"
+            android:textColor="@color/black_gray"
+            android:textSize="22sp"
+            android:visibility="gone" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/btVallid"
+                style="@style/SuccessButton"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:enabled="false"
+                android:singleLine="true"
+                android:text="@string/blank"
+                android:textSize="16sp" />
+
+            <View
+                android:layout_width="@dimen/activity_padding"
+                android:layout_height="1dp" />
+
+            <Button
+                android:id="@+id/btValid"
+                style="@style/SuccessButton"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:enabled="false"
+                android:singleLine="true"
+                android:text="@string/blank"
+                android:textSize="16sp" />
+        </LinearLayout>
+
+    </LinearLayout>
+
+</LinearLayout>

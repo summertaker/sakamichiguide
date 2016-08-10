@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="#fff"
+    android:gravity="center_horizontal"
+    android:orientation="vertical">
+
+    <ProgressBar
+        android:id="@+id/pbPictureLoading"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="60dp"
+        android:layout_marginTop="80dp"
+        android:background="@drawable/progress_bar_circle"
+        android:visibility="gone" />
+
+    <!-- 사진: 고정 사이즈 (테두리) -->
+    <ImageView
+        android:id="@+id/ivPictureBordered"
+        android:layout_width="216dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:adjustViewBounds="true"
+        android:background="@drawable/polaroid"
+        android:contentDescription="@string/blank"
+        android:padding="8dp"
+        android:visibility="gone" />
+
+    <!-- 사진: 고정 사이즈 -->
+    <ImageView
+        android:id="@+id/ivPictureFixed"
+        android:layout_width="320dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:adjustViewBounds="true"
+        android:contentDescription="@string/blank"
+        android:padding="5dp"
+        android:visibility="gone" />
+
+    <!-- 사진: 꽉 찬 사이즈 -->
+    <ImageView
+        android:id="@+id/ivPictureFull"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:adjustViewBounds="true"
+        android:contentDescription="@string/blank"
+        android:scaleType="fitCenter"
+        android:visibility="gone" />
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+        android:orientation="vertical"
+        android:padding="20dp">
+
+        <!-- 일본어 이름 -->
+        <TextView
+            android:id="@+id/tvName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="10dp"
+            android:gravity="center_horizontal"
+            android:textColor="@color/black"
+            android:textSize="36sp"
+            android:visibility="gone" />
+
+        <!-- 후리가나 -->
+        <TextView
+            android:id="@+id/tvFurigana"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="3dp"
+            android:gravity="center_horizontal"
+            android:textColor="@color/dark_sea_green"
+            android:textSize="18sp"
+            android:visibility="gone" />
+
+        <!--로케일 이름-->
+        <TextView
+            android:id="@+id/tvLocaleName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:gravity="center_horizontal"
+            android:textColor="@color/steel_blue"
+            android:textSize="16sp"
+            android:visibility="gone" />
+
+        <LinearLayout
+            android:id="@+id/loRole"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:gravity="center_horizontal"
+            android:orientation="horizontal"
+            android:visibility="gone">
+
+            <include layout="@layout/role_label" />
+
+        </LinearLayout>
+
+        <!-- 오시멘 버튼 -->
+        <Button
+            android:id="@+id/btFollow"
+            style="@style/DefaultMiniButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:text="@string/oshimen"
+            android:visibility="gone" />
+
+        <!-- 오시멘 버튼 -->
+        <Button
+            android:id="@+id/btFollowing"
+            style="@style/DangerMiniButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:text="@string/oshimen"
+            android:visibility="gone" />
+
+        <TextView
+            android:id="@+id/tvInfo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:layout_marginLeft="0dp"
+            android:layout_marginRight="0dp"
+            android:layout_marginTop="15dp"
+            android:gravity="center_horizontal"
+            android:lineSpacingExtra="5dp"
+            android:textColor="@color/black_gray"
+            android:visibility="gone" />
+
+    </LinearLayout>
+</LinearLayout>

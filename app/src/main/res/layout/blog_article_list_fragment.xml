@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v4.widget.SwipeRefreshLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/swipeRefreshLayout"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/card_background">
+
+    <ListView
+        android:id="@+id/listView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:clipToPadding="false"
+        android:divider="@color/listview_divider"
+        android:dividerHeight="@dimen/listview_divider_height"
+        android:paddingBottom="@dimen/listview_padding_vetical"
+        android:paddingEnd="@dimen/listview_padding_horizontal"
+        android:paddingStart="@dimen/listview_padding_horizontal"
+        android:paddingTop="@dimen/listview_padding_vetical"
+        android:scrollbarStyle="outsideOverlay"/>
+
+</android.support.v4.widget.SwipeRefreshLayout>

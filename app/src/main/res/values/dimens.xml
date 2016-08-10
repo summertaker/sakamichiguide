@@ -1,0 +1,114 @@
+<resources>
+
+    <!-- 액티비티 -->
+    <dimen name="activity_padding">10dp</dimen>
+    <dimen name="activity_horizontal_margin">16dp</dimen>
+    <dimen name="activity_vertical_margin">16dp</dimen>
+
+    <dimen name="drawable_padding">5dp</dimen>
+    <dimen name="fab_margin">16dp</dimen>
+
+    <dimen name="appbar_padding_top">8dp</dimen>
+    <dimen name="app_bar_height">180dp</dimen>
+
+    <!-- 레이아웃 -->
+    <dimen name="offset_line">2dp</dimen>
+    <dimen name="offset_mini">4dp</dimen>
+    <dimen name="offset_small">8dp</dimen>
+    <dimen name="offset_default">12dp</dimen>
+    <dimen name="offset_normal">16dp</dimen>
+    <dimen name="offset_medium">20dp</dimen>
+    <dimen name="offset_large">24dp</dimen>
+    <dimen name="offset_big">28dp</dimen>
+    <dimen name="offset_huge">32dp</dimen>
+
+    <!-- 글자 크기 -->
+    <dimen name="text_big">22sp</dimen>
+    <dimen name="text_large">20sp</dimen>
+    <dimen name="text_medium">18sp</dimen>
+    <dimen name="text_normal">15sp</dimen>
+    <dimen name="text_small">14sp</dimen>
+    <dimen name="text_mini">12sp</dimen>
+
+    <!-- 글자 하나 간격 -->
+    <dimen name="character_space">5dp</dimen>
+
+    <!-- 폼 -->
+    <dimen name="form_control_drawable_padding">10dp</dimen>
+    <dimen name="form_control_text_size">15sp</dimen>
+    <dimen name="form_control_margin">15dp</dimen>
+    <dimen name="button_padding">10dp</dimen>
+    <dimen name="button_padding_top">10dp</dimen>
+    <dimen name="button_padding_bottom">10dp</dimen>
+    <dimen name="button_padding_left">20dp</dimen>
+    <dimen name="button_padding_right">20dp</dimen>
+
+    <!-- 스몰 버튼 -->
+    <dimen name="form_control_text_size_small">13sp</dimen>
+    <dimen name="button_height_small">36dp</dimen>
+    <dimen name="button_padding_small">0dp</dimen>
+    <dimen name="button_padding_top_small">10dp</dimen>
+    <dimen name="button_padding_bottom_small">10dp</dimen>
+    <dimen name="button_padding_left_small">20dp</dimen>
+    <dimen name="button_padding_right_small">20dp</dimen>
+
+    <!-- 미니 버튼 -->
+    <dimen name="form_control_text_size_mini">12sp</dimen>
+    <dimen name="button_height_mini">26dp</dimen>
+    <dimen name="button_padding_mini">5dp</dimen>
+    <dimen name="button_padding_top_mini">7dp</dimen>
+    <dimen name="button_padding_bottom_mini">7dp</dimen>
+    <dimen name="button_padding_left_mini">10dp</dimen>
+    <dimen name="button_padding_right_mini">10dp</dimen>
+
+    <!-- Label -->
+    <dimen name="label_radius">3dp</dimen>
+
+    <!-- Card -->
+    <dimen name="card_item_padding">10dp</dimen>
+    <dimen name="card_corner_radius">5dp</dimen>
+    <dimen name="card_elevation">1dp</dimen>
+
+    <!-- Selector -->
+    <dimen name="selector_card_radius">5dp</dimen>
+
+    <!-- ListView -->
+    <dimen name="listview_padding_horizontal">10dp</dimen>
+    <dimen name="listview_padding_vetical">10dp</dimen>
+    <dimen name="listview_divider_height">10dp</dimen>
+    <dimen name="listview_divider_height_compact">6dp</dimen>
+    <dimen name="listview_item_padding_horizontal">18dp</dimen>
+    <dimen name="listview_item_padding_vertical">12dp</dimen>
+
+    <!-- GridView -->
+    <dimen name="grid2_padding">10dp</dimen>
+    <dimen name="grid2_spacing">5dp</dimen>
+    <dimen name="grid2_item_height">160dp</dimen>
+
+    <dimen name="grid3_padding">10dp</dimen>
+    <dimen name="grid3_spacing">9dp</dimen>
+    <dimen name="grid3_item_height">120dp</dimen>
+
+    <dimen name="grid4_padding">5dp</dimen>
+    <dimen name="grid4_spacing">2dp</dimen>
+    <dimen name="grid4_item_height">80dp</dimen>
+
+    <!-- Drawer -->
+    <dimen name="drawer_item_padding">20dp</dimen>
+    <dimen name="drawer_item_padding_vertical">8dp</dimen>
+    <dimen name="drawer_item_padding_horizontal">20dp</dimen>
+
+    <!-- Menu -->
+    <dimen name="menu_divider">1dp</dimen>
+    <dimen name="menu_item_padding_top">12dp</dimen>
+    <dimen name="menu_item_padding_bottom">12dp</dimen>
+    <dimen name="menu_item_padding_left">25dp</dimen>
+    <dimen name="menu_item_padding_right">15dp</dimen>
+    <dimen name="menu_item_icon_width">28dp</dimen>
+    <dimen name="menu_item_icon_height">28dp</dimen>
+    <dimen name="menu_item_icon_spacing">18dp</dimen>
+
+    <!-- 사진 -->
+    <!--<dimen name="picture_profile">42dp</dimen>-->
+
+</resources>

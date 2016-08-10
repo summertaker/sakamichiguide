@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:descendantFocusability="blocksDescendants"
+    android:orientation="vertical">
+
+    <com.summertaker.sakamichiguide.util.ProportionalImageView
+        android:id="@+id/ivPicture"
+        android:layout_width="match_parent"
+        android:layout_height="512dp"
+        android:adjustViewBounds="true"
+        android:background="#fff"
+        android:contentDescription="@string/blank"
+        android:scaleType="fitCenter" />
+
+    <TextView
+        android:id="@+id/tvTitle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#fff"
+        android:lineSpacingExtra="5dp"
+        android:padding="10dp" />
+
+</LinearLayout>

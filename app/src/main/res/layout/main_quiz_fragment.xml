@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/activity_background"
+    android:orientation="vertical"
+    android:padding="10dp">
+
+    <RelativeLayout
+        android:id="@+id/loStudy"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginBottom="5dp"
+        android:layout_weight="1"
+        android:background="@drawable/selector"
+        android:clickable="true"
+        android:focusable="true">
+
+        <RelativeLayout
+            android:id="@+id/loStudyFooter"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:paddingBottom="15dp"
+            android:paddingLeft="15dp"
+            android:paddingRight="15dp"
+            android:paddingTop="15dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_centerVertical="true"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="STUDY / 멤버 이름 외우기"
+                    android:textColor="#555" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="3dp"
+                    android:text="멤버들의 이름을 외워보세요."
+                    android:textColor="#aaa"
+                    android:textStyle="italic" />
+            </LinearLayout>
+
+            <ImageView
+                android:layout_width="32dp"
+                android:layout_height="32dp"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:src="@drawable/ic_chevron_circle_right_light_gray_48" />
+        </RelativeLayout>
+
+        <ImageView
+            android:id="@+id/ivStudy"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_above="@id/loStudyFooter"
+            android:scaleType="fitXY" />
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/loQuiz"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_gravity="center"
+        android:layout_marginTop="5dp"
+        android:layout_weight="1"
+        android:background="@drawable/selector"
+        android:clickable="true"
+        android:focusable="true">
+
+        <RelativeLayout
+            android:id="@+id/loQuizFooter"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:paddingBottom="15dp"
+            android:paddingLeft="15dp"
+            android:paddingRight="15dp"
+            android:paddingTop="15dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_centerVertical="true"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="QUIZ / 멤버 이름 맞추기"
+                    android:textColor="#555" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="3dp"
+                    android:text="멤버들의 이름을 맞추보세요."
+                    android:textColor="#aaa"
+                    android:textStyle="italic" />
+
+            </LinearLayout>
+
+            <ImageView
+                android:layout_width="32dp"
+                android:layout_height="32dp"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:src="@drawable/ic_chevron_circle_right_light_gray_48" />
+        </RelativeLayout>
+
+        <ImageView
+            android:id="@+id/ivQuiz"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_above="@id/loQuizFooter"
+            android:scaleType="fitXY" />
+
+    </RelativeLayout>
+
+</LinearLayout>

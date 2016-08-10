@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:mContext="com.summertaker.sakamichiguide.member.MemberDetailActivity"
+    tools:showIn="@layout/member_detail_activity">
+
+    <!--<LinearLayout
+        android:id="@+id/loMenu"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:orientation="vertical"
+        android:visibility="gone">
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="#e6e6e6" />
+
+        <com.github.paolorotolo.expandableheightlistview.ExpandableHeightListView
+            android:id="@+id/lvMenu"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:divider="@color/menu_bar_divider"
+            android:dividerHeight="1dp"
+            android:scrollbars="none" />
+    </LinearLayout>-->
+
+    <LinearLayout
+        android:id="@+id/loLoading"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/card_background"
+        android:gravity="center_horizontal"
+        android:orientation="vertical">
+
+        <ProgressBar
+            android:id="@+id/pbLoading"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="80dp"
+            android:background="@drawable/progress_bar_circle" />
+
+    </LinearLayout>
+
+    <ScrollView
+        android:id="@+id/scrollView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:clipToPadding="false"
+        android:scrollbarStyle="outsideOverlay"
+        android:visibility="gone">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:clipToPadding="false"
+            android:orientation="vertical">
+
+            <include layout="@layout/member_detail_profile" />
+
+            <include layout="@layout/member_detail_menu" />
+
+        </LinearLayout>
+
+    </ScrollView>
+
+</RelativeLayout>

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/content"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:gravity="center_horizontal"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:context=".blog.BlogGroupSelectActivity"
+    tools:showIn="@layout/blog_group_select_activity">
+
+    <GridView
+        android:id="@+id/gridView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:drawSelectorOnTop="true"
+        android:gravity="center"
+        android:horizontalSpacing="@dimen/activity_padding"
+        android:listSelector="@drawable/selector_card"
+        android:numColumns="4"
+        android:padding="@dimen/activity_padding"
+        android:scrollbarStyle="outsideOverlay"
+        android:stretchMode="columnWidth"
+        android:verticalSpacing="@dimen/activity_padding" />
+
+</RelativeLayout>

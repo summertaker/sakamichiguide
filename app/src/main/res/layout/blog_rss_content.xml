@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:context="com.summertaker.sakamichiguide.blog.BlogRssActivity"
+    tools:showIn="@layout/blog_rss_activity">
+
+    <android.support.v4.widget.SwipeRefreshLayout
+        android:id="@+id/swipeRefreshLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/card_background">
+
+        <ListView
+            android:id="@+id/listView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:clipToPadding="false"
+            android:divider="@color/transparent"
+            android:dividerHeight="@dimen/listview_divider_height"
+            android:drawSelectorOnTop="true"
+            android:listSelector="@drawable/selector_card"
+            android:paddingBottom="@dimen/listview_padding_vetical"
+            android:paddingEnd="@dimen/listview_padding_horizontal"
+            android:paddingStart="@dimen/listview_padding_horizontal"
+            android:paddingTop="@dimen/listview_padding_vetical"
+            android:scrollbarStyle="outsideOverlay" />
+
+    </android.support.v4.widget.SwipeRefreshLayout>
+
+</RelativeLayout>

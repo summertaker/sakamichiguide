@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/loYahooImageSearch"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@android:color/white"
+    android:orientation="vertical"
+    android:visibility="gone">
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/menu_divider" />
+
+    <LinearLayout
+        android:id="@+id/loYahooImageSearchHeader"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/selector_menu_bar"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:paddingBottom="@dimen/menu_item_padding_bottom"
+        android:paddingLeft="@dimen/menu_item_padding_left"
+        android:paddingRight="@dimen/menu_item_padding_right"
+        android:paddingTop="@dimen/menu_item_padding_top">
+
+        <ImageView
+            android:layout_width="@dimen/menu_item_icon_width"
+            android:layout_height="@dimen/menu_item_icon_height"
+            android:layout_marginRight="@dimen/menu_item_icon_spacing"
+            android:src="@drawable/ic_yahoo_japan_64" />
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/yahoo_image_search"
+            android:textColor="@color/menu_text" />
+
+        <ImageView
+            android:layout_width="@dimen/menu_item_icon_width"
+            android:layout_height="@dimen/menu_item_icon_height"
+            android:src="@drawable/ic_chevron_circle_right_light_gray_48" />
+    </LinearLayout>
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layerType="software"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
+        android:src="@drawable/dot" />
+
+    <!--
+    <RelativeLayout
+        android:id="@+id/loYahooImageSearchLoading"
+        android:layout_width="match_parent"
+        android:layout_height="426dp"
+        android:gravity="center">
+
+        <ProgressBar
+            android:id="@+id/pbYahooImageSearchLoading"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+    </RelativeLayout>
+    -->
+
+    <com.github.paolorotolo.expandableheightlistview.ExpandableHeightGridView
+        android:id="@+id/gvYahooImageSearch"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="5dp"
+        android:horizontalSpacing="1dp"
+        android:verticalSpacing="1dp"
+        android:drawSelectorOnTop="true"
+        android:gravity="center"
+        android:numColumns="4"
+        android:listSelector="@drawable/selector_transparent"
+        android:scrollbars="none"
+        android:stretchMode="columnWidth" />
+
+</LinearLayout>

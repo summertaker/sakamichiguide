@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/loMenu"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/menu_background"
+    android:orientation="vertical"
+    android:visibility="gone">
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/menu_divider" />
+
+    <com.github.paolorotolo.expandableheightlistview.ExpandableHeightListView
+        android:id="@+id/lvMenu"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:divider="@color/menu_divider"
+        android:dividerHeight="@dimen/menu_divider"
+        android:drawSelectorOnTop="true"
+        android:listSelector="@drawable/selector_transparent"
+        android:scrollbars="none" />
+
+</LinearLayout>

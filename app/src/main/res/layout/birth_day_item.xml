@@ -1,0 +1,173 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    card_view:cardCornerRadius="@dimen/card_corner_radius"
+    card_view:cardElevation="@dimen/card_elevation">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:baselineAligned="false"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+
+        <LinearLayout
+            android:layout_width="80dp"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/tvDate"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/blank"
+                    android:textColor="@color/black_gray"
+                    android:textSize="26sp"
+                    android:textStyle="italic" />
+
+                <TextView
+                    android:id="@+id/tvDateSuffix"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="3dp"
+                    android:text="@string/date"
+                    android:textColor="@color/black_gray"
+                    android:textSize="12sp"
+                    android:visibility="gone" />
+
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/tvDay"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/blank"
+                android:textSize="12sp"
+                android:textColor="@color/gray" />
+
+            <TextView
+                android:id="@+id/tvYesterday"
+                style="@style/InfoLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="7dp"
+                android:paddingBottom="3dp"
+                android:paddingEnd="5dp"
+                android:paddingStart="5dp"
+                android:paddingTop="2dp"
+                android:text="@string/yesterday"
+                android:visibility="gone" />
+
+            <TextView
+                android:id="@+id/tvToday"
+                style="@style/DangerLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="7dp"
+                android:paddingBottom="3dp"
+                android:paddingEnd="5dp"
+                android:paddingStart="5dp"
+                android:paddingTop="2dp"
+                android:text="@string/today"
+                android:visibility="gone" />
+
+            <TextView
+                android:id="@+id/tvTomorrow"
+                style="@style/SuccessLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="7dp"
+                android:paddingBottom="3dp"
+                android:paddingEnd="5dp"
+                android:paddingStart="5dp"
+                android:paddingTop="2dp"
+                android:text="@string/tomorrow"
+                android:visibility="gone" />
+
+        </LinearLayout>
+
+        <RelativeLayout
+            android:id="@+id/loPicture"
+            android:layout_width="80dp"
+            android:layout_height="90dp"
+            android:layout_marginBottom="3dp"
+            android:layout_marginTop="3dp"
+            android:background="@drawable/polaroid"
+            android:gravity="center"
+            android:padding="3dp">
+
+            <ProgressBar
+                android:id="@+id/pbPictureLoading"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/progress_bar_circle" />
+
+            <ImageView
+                android:id="@+id/ivPicture"
+                android:layout_width="80dp"
+                android:layout_height="90dp"
+                android:contentDescription="@string/blank"
+                android:scaleType="centerCrop"
+                android:visibility="gone" />
+
+        </RelativeLayout>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="10dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginStart="10dp"
+            android:layout_weight="1"
+            android:gravity="center_vertical"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/tvName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:maxLines="1"
+                android:text="@string/blank"
+                android:textColor="@color/black"
+                android:textSize="17sp"
+                android:visibility="gone" />
+
+            <TextView
+                android:id="@+id/tvAge"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="3dp"
+                android:text="@string/blank"
+                android:textColor="@color/sea_green" />
+
+            <TextView
+                android:id="@+id/tvBirthday"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="3dp"
+                android:text="@string/blank"
+                android:textColor="@color/gray"
+                android:textStyle="italic"
+                android:textSize="12sp" />
+
+            <TextView
+                android:id="@+id/tvTeam"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/blank"
+                android:visibility="gone" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</android.support.v7.widget.CardView>

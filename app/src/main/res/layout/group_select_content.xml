@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:mContext="com.summertaker.sakamichiguide.member.GroupSelectorActivity"
+    tools:showIn="@layout/group_select_activity">
+
+    <LinearLayout
+        android:id="@+id/loListView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/card_background"
+        android:orientation="vertical"
+        android:visibility="gone">
+
+        <GridView
+            android:id="@+id/gridText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:drawSelectorOnTop="true"
+            android:horizontalSpacing="5dp"
+            android:listSelector="@drawable/selector_card"
+            android:numColumns="3"
+            android:padding="@dimen/activity_padding"
+            android:stretchMode="columnWidth"
+            android:verticalSpacing="5dp" />
+
+    </LinearLayout>
+
+    <ScrollView xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:id="@+id/loGridView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/white"
+        android:padding="10dp"
+        android:scrollbarStyle="outsideOverlay"
+        android:visibility="gone">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/tvHeaderDescription"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:paddingTop="10dp"
+                android:text="@string/select_a_group"
+                android:textColor="@color/black" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginBottom="15dp"
+                android:layout_marginEnd="10dp"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="20dp"
+                android:background="#d9d9d9" />
+
+            <com.github.paolorotolo.expandableheightlistview.ExpandableHeightGridView
+                android:id="@+id/gridView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:drawSelectorOnTop="true"
+                android:horizontalSpacing="0dp"
+                android:listSelector="@drawable/selector_card"
+                android:numColumns="4"
+                android:paddingEnd="5dp"
+                android:paddingStart="5dp"
+                android:scrollbars="none"
+                android:stretchMode="columnWidth"
+                android:verticalSpacing="0dp" />
+
+        </LinearLayout>
+
+    </ScrollView>
+
+</LinearLayout>

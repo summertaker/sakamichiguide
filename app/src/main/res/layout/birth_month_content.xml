@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/card_background"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:context="com.summertaker.sakamichiguide.birthday.BirthMonthActivity"
+    tools:showIn="@layout/birth_month_activity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+        android:orientation="vertical">
+
+        <ProgressBar
+            android:id="@+id/pbLoading"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="80dp"
+            android:background="@drawable/progress_bar_circle" />
+
+        <android.support.v7.widget.CardView xmlns:card_view="http://schemas.android.com/apk/res-auto"
+            android:id="@+id/cardViewChart"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="0dp"
+            android:layout_marginEnd="@dimen/activity_padding"
+            android:layout_marginStart="@dimen/activity_padding"
+            android:layout_marginTop="@dimen/activity_padding"
+            android:visibility="gone"
+            card_view:cardCornerRadius="@dimen/card_corner_radius"
+            card_view:cardElevation="@dimen/card_elevation">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:paddingBottom="5dp"
+                android:paddingEnd="10dp"
+                android:paddingStart="10dp"
+                android:paddingTop="10dp">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="10dp"
+                    android:text="월별 생일자"
+                    android:textColor="@color/steel_blue"
+                    android:textSize="16sp" />
+
+                <com.github.mikephil.charting.charts.HorizontalBarChart
+                    android:id="@+id/barChartVote"
+                    android:layout_width="match_parent"
+                    android:layout_height="340dp" />
+
+            </LinearLayout>
+
+        </android.support.v7.widget.CardView>
+
+        <!--<ListView
+            android:id="@+id/listView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:clipToPadding="false"
+            android:divider="@color/listview_divider"
+            android:dividerHeight="@dimen/activity_padding"
+            android:drawSelectorOnTop="true"
+            android:listSelector="@drawable/selector_card"
+            android:padding="@dimen/activity_padding"
+            android:scrollbarStyle="outsideOverlay"
+            android:visibility="gone" />-->
+
+        <com.github.paolorotolo.expandableheightlistview.ExpandableHeightGridView
+            android:id="@+id/gridView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:clipToPadding="false"
+            android:drawSelectorOnTop="true"
+            android:horizontalSpacing="5dp"
+            android:listSelector="@drawable/selector_card"
+            android:numColumns="3"
+            android:padding="@dimen/activity_padding"
+            android:scrollbars="none"
+            android:stretchMode="columnWidth"
+            android:verticalSpacing="7dp"
+            android:visibility="gone" />
+
+    </LinearLayout>
+
+</ScrollView>

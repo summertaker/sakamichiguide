@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/loGoogleImageSearch"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:visibility="gone">
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="#f1f1f1" />
+
+    <LinearLayout
+        android:id="@+id/loGoogleImageSearchHeader"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/selector_menu_bar"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:paddingBottom="@dimen/menu_item_padding_bottom"
+        android:paddingLeft="@dimen/menu_item_padding_left"
+        android:paddingRight="@dimen/menu_item_padding_right"
+        android:paddingTop="@dimen/menu_item_padding_top">
+
+        <ImageView
+            android:layout_width="@dimen/menu_item_icon_width"
+            android:layout_height="@dimen/menu_item_icon_height"
+            android:layout_marginRight="@dimen/menu_item_icon_spacing"
+            android:src="@drawable/ic_camera_64" />
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/google_image_search" />
+
+        <ImageView
+            android:layout_width="@dimen/menu_item_icon_width"
+            android:layout_height="@dimen/menu_item_icon_height"
+            android:src="@drawable/ic_chevron_circle_right_light_gray_48" />
+    </LinearLayout>
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layerType="software"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
+        android:src="@drawable/dot" />
+
+    <RelativeLayout
+        android:id="@+id/loGoogleImageSearchLoading"
+        android:layout_width="match_parent"
+        android:layout_height="426dp"
+        android:gravity="center">
+
+        <ProgressBar
+            android:id="@+id/pbGoogleImageSearchLoading"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+    </RelativeLayout>
+
+    <!-- 그리드 뷰: 구글 이미지 검색 -->
+    <com.summertaker.sakamichiguide.util.ExpandableHeightGridView
+        android:id="@+id/gvGoogleImageSearch"
+        android:layout_width="match_parent"
+        android:layout_height="426dp"
+        android:layout_margin="10dp"
+        android:horizontalSpacing="2dp"
+        android:verticalSpacing="2dp"
+        android:numColumns="4"
+        android:scrollbars="none"
+        android:visibility="gone"/>
+
+</LinearLayout>

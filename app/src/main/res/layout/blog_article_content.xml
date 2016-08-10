@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/content"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/card_background"
+    android:gravity="center_horizontal"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:context=".blog.BlogArticleListActivity"
+    tools:showIn="@layout/blog_article_activity">
+
+    <ProgressBar
+        android:id="@+id/pbLoading"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="80dp"
+        android:background="@drawable/progress_bar_circle" />
+
+    <android.support.v4.widget.SwipeRefreshLayout
+        android:id="@+id/swipeRefreshLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <ListView
+            android:id="@+id/listView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:clipToPadding="false"
+            android:divider="@color/transparent"
+            android:dividerHeight="10dp"
+            android:drawSelectorOnTop="true"
+            android:listSelector="@drawable/selector_transparent"
+            android:scrollbarStyle="outsideOverlay"
+            android:visibility="gone" />
+
+    </android.support.v4.widget.SwipeRefreshLayout>
+
+</RelativeLayout>

@@ -1,0 +1,249 @@
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:clipToPadding="false"
+    android:scrollbarStyle="outsideOverlay">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="@dimen/activity_padding">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:id="@+id/ivHeader"
+                    android:layout_width="match_parent"
+                    android:layout_height="140dp"
+                    android:contentDescription="@string/blank"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/pic_3" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_horizontal"
+                    android:orientation="vertical"
+                    android:paddingBottom="15dp"
+                    android:paddingLeft="20dp"
+                    android:paddingRight="20dp"
+                    android:paddingTop="15dp">
+
+                    <!--제목-->
+                    <!--<TextView
+                        android:id="@+id/tvHeaderTitle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="5dp"
+                        android:text="@string/memory"
+                        android:textColor="@color/black"
+                        android:textStyle="bold" />-->
+
+                    <!--설명-->
+                    <TextView
+                        android:id="@+id/tvHeaderDescription"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/select_an_item"
+                        android:textColor="@color/black_gray"/>
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <!--구분선-->
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginBottom="0dp"
+                android:layout_marginEnd="15dp"
+                android:layout_marginStart="15dp"
+                android:layout_marginTop="0dp"
+                android:background="#ccc" />
+
+            <!--슬라이드-->
+            <LinearLayout
+                android:id="@+id/loSlide"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="0dp"
+                android:layout_marginEnd="10dp"
+                android:layout_marginStart="5dp"
+                android:layout_marginTop="0dp"
+                android:background="@drawable/selector_card"
+                android:gravity="center"
+                android:orientation="horizontal"
+                android:paddingBottom="15dp"
+                android:paddingEnd="10dp"
+                android:paddingStart="10dp"
+                android:paddingTop="15dp">
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical"
+                    android:paddingEnd="30dp"
+                    android:paddingStart="0dp">
+
+                    <!--제목-->
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/slide"
+                        android:textColor="@color/black" />
+
+                    <!--설명-->
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="5dp"
+                        android:text="@string/shows_the_names_of_the_members"
+                        android:textColor="@color/dark_gray"
+                        android:textStyle="italic" />
+
+                </LinearLayout>
+
+                <ImageView
+                    android:layout_width="32dp"
+                    android:layout_height="32dp"
+                    android:contentDescription="@string/blank"
+                    android:src="@drawable/main_play" />
+
+            </LinearLayout>
+
+            <!--구분선-->
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginBottom="0dp"
+                android:layout_marginEnd="15dp"
+                android:layout_marginStart="15dp"
+                android:layout_marginTop="0dp"
+                android:background="#ccc" />
+
+            <!--스터디-->
+            <LinearLayout
+                android:id="@+id/loMemory"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="0dp"
+                android:layout_marginEnd="10dp"
+                android:layout_marginStart="5dp"
+                android:layout_marginTop="0dp"
+                android:background="@drawable/selector_card"
+                android:gravity="center"
+                android:orientation="horizontal"
+                android:paddingBottom="15dp"
+                android:paddingEnd="10dp"
+                android:paddingStart="10dp"
+                android:paddingTop="15dp">
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical"
+                    android:paddingEnd="30dp"
+                    android:paddingStart="0dp">
+
+                    <!--제목-->
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/memory"
+                        android:textColor="@color/black" />
+
+                    <!--설명-->
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="5dp"
+                        android:text="@string/try_to_memorize_the_names_of_the_members"
+                        android:textColor="@color/dark_gray"
+                        android:textStyle="italic" />
+
+                </LinearLayout>
+
+                <ImageView
+                    android:layout_width="32dp"
+                    android:layout_height="32dp"
+                    android:contentDescription="@string/blank"
+                    android:src="@drawable/main_checkboard" />
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <!--구분선-->
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginBottom="0dp"
+            android:layout_marginEnd="15dp"
+            android:layout_marginStart="15dp"
+            android:layout_marginTop="0dp"
+            android:background="#ccc" />
+
+        <!--퀴즈-->
+        <LinearLayout
+            android:id="@+id/loQuiz"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="0dp"
+            android:layout_marginEnd="10dp"
+            android:layout_marginStart="5dp"
+            android:layout_marginTop="0dp"
+            android:background="@drawable/selector_card"
+            android:gravity="center"
+            android:orientation="horizontal"
+            android:paddingBottom="15dp"
+            android:paddingEnd="10dp"
+            android:paddingStart="10dp"
+            android:paddingTop="15dp">
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical"
+                android:paddingEnd="30dp"
+                android:paddingStart="0dp">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/quiz"
+                    android:textColor="@color/black" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:text="@string/try_to_match_the_names_of_the_members"
+                    android:textColor="@color/dark_gray"
+                    android:textStyle="italic" />
+
+            </LinearLayout>
+
+            <ImageView
+                android:layout_width="32dp"
+                android:layout_height="32dp"
+                android:contentDescription="@string/blank"
+                android:src="@drawable/main_target" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</ScrollView>

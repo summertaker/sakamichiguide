@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="#eee"
+    android:gravity="clip_horizontal"
+    android:orientation="vertical">
+
+    <ProgressBar
+        android:id="@+id/pbLoading"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="50dp" />
+
+    <GridView
+        android:id="@+id/gridView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:drawSelectorOnTop="true"
+        android:gravity="center"
+        android:layout_margin="5dp"
+        android:horizontalSpacing="1dp"
+        android:verticalSpacing="1dp"
+        android:listSelector="@drawable/selector_transparent"
+        android:numColumns="4"
+        android:scrollbars="none"
+        android:stretchMode="columnWidth"
+        android:visibility="gone" />
+
+    <!--<com.github.paolorotolo.expandableheightlistview.ExpandableHeightGridView-->
+    <!--android:id="@+id/gridView"-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:layout_margin="10dp"-->
+    <!--android:drawSelectorOnTop="true"-->
+    <!--android:gravity="center"-->
+    <!--android:horizontalSpacing="2dp"-->
+    <!--android:listSelector="@drawable/selector_transparent"-->
+    <!--android:numColumns="3"-->
+    <!--android:scrollbars="none"-->
+    <!--android:stretchMode="columnWidth"-->
+    <!--android:verticalSpacing="2dp"-->
+    <!--android:visibility="gone" />-->
+
+</LinearLayout>

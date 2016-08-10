@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal">
+
+    <!--총감독-->
+    <TextView
+        android:id="@+id/tvGeneralManager"
+        style="@style/PrimaryLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="2dp"
+        android:paddingBottom="4dp"
+        android:paddingEnd="5dp"
+        android:paddingStart="5dp"
+        android:paddingTop="3dp"
+        android:text="@string/general_manager"
+        android:visibility="gone" />
+
+    <!--그룹 캡틴-->
+    <TextView
+        android:id="@+id/tvGeneralCaptain"
+        style="@style/PrimaryLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="2dp"
+        android:paddingBottom="4dp"
+        android:paddingEnd="5dp"
+        android:paddingStart="5dp"
+        android:paddingTop="3dp"
+        android:text="@string/general_captain"
+        android:visibility="gone" />
+
+    <!-- 팀 캡틴/리더 -->
+    <TextView
+        android:id="@+id/tvCaptain"
+        style="@style/DangerLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="2dp"
+        android:paddingBottom="4dp"
+        android:paddingEnd="5dp"
+        android:paddingStart="5dp"
+        android:paddingTop="3dp"
+        android:text="@string/captain"
+        android:visibility="gone" />
+
+    <!-- 팀 부캡틴/부리더 -->
+    <TextView
+        android:id="@+id/tvViceCaptain"
+        style="@style/SuccessLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="2dp"
+        android:paddingBottom="4dp"
+        android:paddingEnd="5dp"
+        android:paddingStart="5dp"
+        android:paddingTop="3dp"
+        android:text="@string/vice_captain"
+        android:visibility="gone" />
+
+    <!--겸임-->
+    <TextView
+        android:id="@+id/tvConcurrentPosition"
+        style="@style/InfoLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="2dp"
+        android:paddingBottom="4dp"
+        android:paddingEnd="5dp"
+        android:paddingStart="5dp"
+        android:paddingTop="3dp"
+        android:text="@string/concurrent_position"
+        android:visibility="gone" />
+
+    <!--지배인-->
+    <TextView
+        android:id="@+id/tvManager"
+        style="@style/WarningLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="2dp"
+        android:paddingBottom="4dp"
+        android:paddingEnd="5dp"
+        android:paddingStart="5dp"
+        android:paddingTop="3dp"
+        android:text="@string/manager"
+        android:visibility="gone" />
+
+</LinearLayout>

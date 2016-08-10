@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/loProfile"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:visibility="gone">
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/menu_divider" />
+
+    <LinearLayout
+        android:id="@+id/loProfileHeader"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/menu_normal"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:paddingBottom="@dimen/menu_item_padding_bottom"
+        android:paddingLeft="@dimen/menu_item_padding_left"
+        android:paddingRight="@dimen/menu_item_padding_right"
+        android:paddingTop="@dimen/menu_item_padding_top">
+
+        <ImageView
+            android:layout_width="@dimen/menu_item_icon_width"
+            android:layout_height="@dimen/menu_item_icon_height"
+            android:layout_marginRight="@dimen/menu_item_icon_spacing"
+            android:src="@drawable/ic_female_green_48" />
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/official_site_profile" />
+
+        <ImageView
+            android:layout_width="@dimen/menu_item_icon_width"
+            android:layout_height="@dimen/menu_item_icon_height"
+            android:src="@drawable/ic_chevron_circle_right_light_gray_48" />
+    </LinearLayout>
+
+</LinearLayout>

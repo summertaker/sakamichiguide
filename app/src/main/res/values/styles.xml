@@ -1,0 +1,258 @@
+<resources>
+
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/primary</item>
+        <item name="colorPrimaryDark">@color/primary_dark</item>
+        <item name="colorAccent">@color/accent</item>
+    </style>
+
+    <style name="AppTheme.NoActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+
+    <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+
+    <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+
+    <style name="TextColorWhite">
+        <!--item name="android:textSize">14sp</item-->
+        <item name="android:textColor">#ffffff</item>
+    </style>
+
+    <style name="TextColorWhiteBold">
+        <item name="android:textColor">#ffffff</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="TextColorBlack">
+        <!--item name="android:textSize">14sp</item-->
+        <item name="android:textColor">#000000</item>
+    </style>
+
+    <style name="TextColorBlackBold">
+        <item name="android:textColor">#000000</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="AppCompatPrimaryButton" parent="Widget.AppCompat.Button.Colored">
+        <item name="colorButtonNormal">@color/button_primary</item>
+        <item name="android:textColor">@color/white</item>
+    </style>
+
+    <style name="AppCompatSuccessButton" parent="Widget.AppCompat.Button.Colored">
+        <item name="colorButtonNormal">@color/button_success</item>
+        <item name="android:textColor">@color/white</item>
+    </style>
+
+    <style name="AppCompatInfoButton" parent="Widget.AppCompat.Button.Colored">
+        <item name="colorButtonNormal">@color/button_info</item>
+        <item name="android:textColor">@color/white</item>
+    </style>
+
+    <style name="AppCompatWarningButton" parent="Widget.AppCompat.Button.Colored">
+        <item name="colorButtonNormal">@color/button_warning</item>
+        <item name="android:textColor">@color/white</item>
+    </style>
+
+    <style name="AppCompatDangerButton" parent="Widget.AppCompat.Button.Colored">
+        <item name="colorButtonNormal">@color/button_danger</item>
+        <item name="android:textColor">@color/white</item>
+    </style>
+
+    <!-- 버튼 -->
+    <style name="BaseButton" parent="android:Widget.Button">
+        <item name="android:textSize">@dimen/form_control_text_size</item>
+        <item name="android:textColor">@color/button_text_default</item>
+        <item name="android:gravity">center</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:background">@drawable/btn_primary</item>
+    </style>
+
+    <style name="NormalButton" parent="BaseButton" />
+
+    <style name="SmallButton" parent="BaseButton">
+        <item name="android:textSize">@dimen/form_control_text_size_small</item>
+        <item name="android:minHeight">0dp</item>
+        <item name="android:minWidth">0dp</item>
+        <item name="android:paddingTop">@dimen/button_padding_top_small</item>
+        <item name="android:paddingBottom">@dimen/button_padding_bottom_small</item>
+        <item name="android:paddingLeft">@dimen/button_padding_left_small</item>
+        <item name="android:paddingRight">@dimen/button_padding_right_small</item>
+    </style>
+
+    <style name="MiniButton" parent="BaseButton">
+        <item name="android:textSize">@dimen/form_control_text_size_mini</item>
+        <item name="android:minHeight">0dp</item>
+        <item name="android:minWidth">0dp</item>
+        <item name="android:paddingTop">@dimen/button_padding_top_mini</item>
+        <item name="android:paddingBottom">@dimen/button_padding_bottom_mini</item>
+        <item name="android:paddingLeft">@dimen/button_padding_left_mini</item>
+        <item name="android:paddingRight">@dimen/button_padding_right_mini</item>
+    </style>
+
+    <!-- Default Button -->
+    <style name="DefaultButton" parent="NormalButton">
+        <item name="android:background">@drawable/btn_default</item>
+        <item name="android:textColor">@color/button_text_reverse</item>
+    </style>
+
+    <style name="DefaultSmallButton" parent="SmallButton">
+        <item name="android:background">@drawable/btn_default</item>
+        <item name="android:textColor">@color/button_text_reverse</item>
+    </style>
+
+    <style name="DefaultMiniButton" parent="MiniButton">
+        <item name="android:background">@drawable/btn_default</item>
+        <item name="android:textColor">@color/button_text_reverse</item>
+    </style>
+
+    <!-- Primary Button -->
+    <style name="PrimaryButton" parent="NormalButton">
+        <item name="android:background">@drawable/btn_primary</item>
+        <item name="android:textColor">@color/button_text_default</item>
+    </style>
+
+    <style name="PrimarySmallButton" parent="SmallButton">
+        <item name="android:background">@drawable/btn_primary</item>
+        <item name="android:textColor">@color/button_text_default</item>
+    </style>
+
+    <style name="PrimaryMiniButton" parent="MiniButton">
+        <item name="android:background">@drawable/btn_primary</item>
+        <item name="android:textColor">@color/button_text_default</item>
+    </style>
+
+    <!-- Success Button -->
+    <style name="SuccessButton" parent="NormalButton">
+        <item name="android:background">@drawable/btn_success</item>
+        <item name="android:textColor">@color/button_text_default</item>
+    </style>
+
+    <style name="SuccessSmallButton" parent="SmallButton">
+        <item name="android:background">@drawable/btn_success</item>
+        <item name="android:textColor">@color/button_text_default</item>
+    </style>
+
+    <style name="SuccessMiniButton" parent="MiniButton">
+        <item name="android:background">@drawable/btn_success</item>
+        <item name="android:textColor">@color/button_text_default</item>
+    </style>
+
+    <!-- Info Button -->
+    <style name="InfoButton" parent="NormalButton">
+        <item name="android:background">@drawable/btn_info</item>
+        <item name="android:textColor">@color/button_text_default</item>
+    </style>
+
+    <style name="InfoSmallButton" parent="SmallButton">
+        <item name="android:background">@drawable/btn_info</item>
+        <item name="android:textColor">@color/button_text_default</item>
+    </style>
+
+    <style name="InfoMiniButton" parent="MiniButton">
+        <item name="android:background">@drawable/btn_info</item>
+        <item name="android:textColor">@color/button_text_default</item>
+    </style>
+
+    <!-- Warning Button -->
+    <style name="WarningButton" parent="NormalButton">
+        <item name="android:background">@drawable/btn_warning</item>
+        <item name="android:textColor">@color/button_text_default</item>
+    </style>
+
+    <style name="WarningSmallButton" parent="SmallButton">
+        <item name="android:background">@drawable/btn_warning</item>
+        <item name="android:textColor">@color/button_text_default</item>
+    </style>
+
+    <style name="WarningMiniButton" parent="MiniButton">
+        <item name="android:background">@drawable/btn_warning</item>
+        <item name="android:textColor">@color/button_text_default</item>
+    </style>
+
+    <!-- Danger Button -->
+    <style name="DangerButton" parent="NormalButton">
+        <item name="android:background">@drawable/btn_danger</item>
+        <item name="android:textColor">@color/button_text_default</item>
+    </style>
+
+    <style name="DangerSmallButton" parent="SmallButton">
+        <item name="android:background">@drawable/btn_danger</item>
+        <item name="android:textColor">@color/button_text_default</item>
+    </style>
+
+    <style name="DangerMiniButton" parent="MiniButton">
+        <item name="android:background">@drawable/btn_danger</item>
+        <item name="android:textColor">@color/button_text_default</item>
+    </style>
+
+    <!-- 라벨 -->
+    <style name="Label" parent="android:Widget.TextView">
+        <item name="android:textSize">10sp</item>
+        <item name="android:textColor">@color/button_text_default</item>
+        <item name="android:background">@drawable/label_default</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">18dp</item>
+        <item name="android:minHeight">0dp</item>
+        <item name="android:minWidth">0dp</item>
+        <item name="android:gravity">center</item>
+        <item name="android:paddingTop">0dp</item>
+        <item name="android:paddingBottom">0dp</item>
+        <item name="android:paddingLeft">4dp</item>
+        <item name="android:paddingRight">4dp</item>
+    </style>
+
+    <style name="DefaultLabel" parent="Label">
+        <item name="android:background">@drawable/label_default</item>
+        <item name="android:textColor">@color/button_text_reverse</item>
+    </style>
+
+    <style name="PrimaryLabel" parent="Label">
+        <item name="android:background">@drawable/label_primary</item>
+        <item name="android:textColor">@color/button_text_default</item>
+    </style>
+
+    <style name="SuccessLabel" parent="Label">
+        <item name="android:background">@drawable/label_success</item>
+        <item name="android:textColor">@color/button_text_default</item>
+    </style>
+
+    <style name="InfoLabel" parent="Label">
+        <item name="android:background">@drawable/label_info</item>
+        <item name="android:textColor">@color/button_text_default</item>
+    </style>
+
+    <style name="WarningLabel" parent="Label">
+        <item name="android:background">@drawable/label_warning</item>
+        <item name="android:textColor">@color/button_text_default</item>
+    </style>
+
+    <style name="DangerLabel" parent="Label">
+        <item name="android:background">@drawable/label_danger</item>
+        <item name="android:textColor">@color/button_text_default</item>
+    </style>
+
+    <style name="PurpleLabel" parent="Label">
+        <item name="android:background">@drawable/label_purple</item>
+        <item name="android:textColor">@color/button_text_default</item>
+    </style>
+
+    <style name="ProgressBarHorizontal" parent="android:Widget.ProgressBar.Horizontal">
+        <item name="android:indeterminateOnly">false</item>
+        <item name="android:progressDrawable">@drawable/progress_bar_horizontal</item>
+        <item name="android:minHeight">10dp</item>
+        <item name="android:maxHeight">10dp</item>
+    </style>
+
+    <style name="ProgressBarHorizontalGray" parent="android:Widget.ProgressBar.Horizontal">
+        <item name="android:indeterminateOnly">false</item>
+        <item name="android:progressDrawable">@drawable/progress_bar_horizontal_dark</item>
+        <item name="android:minHeight">10dp</item>
+        <item name="android:maxHeight">10dp</item>
+    </style>
+
+</resources>
