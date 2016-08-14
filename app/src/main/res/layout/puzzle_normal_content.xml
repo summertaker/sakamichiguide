@@ -1064,4 +1064,6 @@
 
     </LinearLayout>
 
+    <include layout="@layout/puzzle_result_popup" />
+
 </RelativeLayout>

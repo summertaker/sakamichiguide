@@ -62,8 +62,10 @@ public class PuzzleActivity extends BaseActivity {
     ArrayList<MemberData> mMemberList = new ArrayList<>();
     ArrayList<TeamData> mTeamDataList = new ArrayList<>();
 
+    RelativeLayout mResultLayout;
     CountDownTimer mResultTimer;
     TextView mTvResultTimer;
+    Button mBtnResultOk;
 
     int mCount = 0;
     int mTotal = 30;
@@ -142,7 +144,15 @@ public class PuzzleActivity extends BaseActivity {
             tv.setTextAlignment(View.TEXT_ALIGNMENT_CENTER);
         }
 
+        mResultLayout = (RelativeLayout) findViewById(R.id.result);
         mTvResultTimer = (TextView) findViewById(R.id.tvResultTimer);
+        mBtnResultOk = (Button) findViewById(R.id.btnResultOk);
+        mBtnResultOk.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                doFinish();
+            }
+        });
 
         String url = mGroupData.getUrl();
         String userAgent = Config.USER_AGENT_WEB;
@@ -464,17 +474,7 @@ public class PuzzleActivity extends BaseActivity {
         //Log.e(mTag, "mFounds.size(): " + mFounds.size());
         if (mFounds.size() == mTotal) {
             mResultTimer.cancel();
-
-            RelativeLayout rl = (RelativeLayout) findViewById(R.id.result);
-            rl.setVisibility(View.VISIBLE);
-
-            Button btnResultOk = (Button) findViewById(R.id.btnResultOk);
-            btnResultOk.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    doFinish();
-                }
-            });
+            mResultLayout.setVisibility(View.VISIBLE);
         }
     }
 
