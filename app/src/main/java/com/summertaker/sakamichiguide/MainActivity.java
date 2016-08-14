@@ -89,6 +89,7 @@ public class MainActivity extends BaseActivity implements NavigationView.OnNavig
                 mMenuDatas.add(new MenuData(Config.MAIN_ACTION_MEMORY, getString(R.string.memory), R.drawable.main_check));
                 mMenuDatas.add(new MenuData(Config.MAIN_ACTION_QUIZ, getString(R.string.quiz), R.drawable.main_target));
                 mMenuDatas.add(new MenuData(Config.MAIN_ACTION_RAW_PHOTO, getString(R.string.raw_photo), R.drawable.main_camera));
+                mMenuDatas.add(new MenuData(Config.MAIN_ACTION_PUZZLE, getString(R.string.puzzle), R.drawable.main_pause));
 
                 MainMenuAdapter adapter = new MainMenuAdapter(mContext, mMenuDatas);
                 ExpandableHeightGridView gridView = (ExpandableHeightGridView) findViewById(R.id.gridView);

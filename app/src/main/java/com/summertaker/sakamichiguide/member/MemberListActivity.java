@@ -42,6 +42,7 @@ public class MemberListActivity extends BaseActivity {
     String mTitle;
     GroupData mGroupData;
     TeamData mTeamData;
+    boolean mIsMobile = false;
 
     ProgressBar mPbLoading;
     ArrayList<TeamData> mTeamList;
@@ -118,6 +119,7 @@ public class MemberListActivity extends BaseActivity {
                     // PC 사이트 상세화면은 네트웍 타임아웃 에러 발생하니 모바일 사이트 사용한다.
                     url = mGroupData.getMobileUrl();
                     userAgent = Config.USER_AGENT_MOBILE;
+                    mIsMobile = true;
                     break;
             }
             requestData(url, userAgent);
@@ -182,24 +184,14 @@ public class MemberListActivity extends BaseActivity {
     }
 
     private void parseData(String url, String response) {
-        boolean isMobile = url.equals(mGroupData.getMobileUrl());
-
         if (url.contains("wiki")) {
             //Log.e(mTag, response);
             mWikiMemberList = new ArrayList<>();
-            switch (mGroupData.getId()) {
-                case Config.GROUP_ID_NOGIZAKA46:
-                case Config.GROUP_ID_KEYAKIZAKA46:
-                    mWikiParser.parse46List(response, mGroupData, mWikiMemberList);
-                    break;
-                default:
-                    mWikiParser.parse48List(response, mGroupData, mWikiMemberList);
-                    break;
-            }
+            mWikiParser.parse46List(response, mGroupData, mWikiMemberList);
             isWikiLoaded = true;
         } else {
             BaseParser baseParser = new BaseParser();
-            baseParser.parseMemberList(response, mGroupData, mMemberList, mTeamList, isMobile);
+            baseParser.parseMemberList(response, mGroupData, mMemberList, mTeamList, mIsMobile);
             isDataLoaded = true;
         }
         renderData();

@@ -180,5 +180,10 @@
     <string name="select_the_blog">ブログを選択</string>
     <string name="select_none">選択なし</string>
     <string name="please_wait">お待ちください。</string>
+    <string name="select_the_level">レベルを選択してください。</string>
+    <string name="level_easy">イージー</string>
+    <string name="level_hard">ハード</string>
+    <string name="level_normal">ノーマル</string>
+    <string name="puzzle">パズル</string>
 
 </resources>

@@ -180,5 +180,10 @@
     <string name="select_the_blog">블로그 선택</string>
     <string name="select_none">전체 해제</string>
     <string name="please_wait">기다려주세요.</string>
+    <string name="select_the_level">레벨을 선택하세요.</string>
+    <string name="level_easy">쉬움</string>
+    <string name="level_hard">어려움</string>
+    <string name="level_normal">보통</string>
+    <string name="puzzle">퍼즐</string>
 
 </resources>

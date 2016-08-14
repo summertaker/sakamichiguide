@@ -1,0 +1,1067 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/content"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/card_background"
+    android:gravity="center_horizontal"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:context="com.summertaker.sakamichiguide.puzzle.PuzzleActivity"
+    tools:showIn="@layout/puzzle_normal_activity">
+
+    <ProgressBar
+        android:id="@+id/pbLoading"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="80dp"
+        android:background="@drawable/progress_bar_circle" />
+
+    <!--<GridView
+        android:id="@+id/gridView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:clipToPadding="false"
+        android:drawSelectorOnTop="true"
+        android:gravity="center"
+        android:horizontalSpacing="@dimen/grid3_spacing"
+        android:listSelector="@drawable/selector_card"
+        android:numColumns="3"
+        android:padding="@dimen/grid3_padding"
+        android:scrollbarStyle="outsideOverlay"
+        android:stretchMode="columnWidth"
+        android:verticalSpacing="@dimen/grid3_spacing"
+        android:visibility="gone" />-->
+
+    <LinearLayout
+        android:id="@+id/grid"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/puzzle_background"
+        android:orientation="vertical"
+        android:padding="@dimen/puzzle_45_spacing"
+        android:visibility="gone">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:baselineAligned="false"
+                android:orientation="horizontal">
+
+                <android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+                    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    card_view:cardBackgroundColor="@color/transparent"
+                    card_view:cardCornerRadius="@dimen/puzzle_card_radius"
+                    card_view:cardElevation="@dimen/puzzle_card_elevation">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:gravity="center"
+                        android:orientation="vertical">
+
+                        <RelativeLayout
+                            android:id="@+id/pl1"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:background="@color/puzzle_card_loading_background"
+                            android:gravity="center">
+
+                            <ProgressBar
+                                android:id="@+id/pb1"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:background="@drawable/progress_bar_circle" />
+
+                        </RelativeLayout>
+
+                        <ImageView
+                            android:id="@+id/iv1"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:contentDescription="@string/blank"
+                            android:scaleType="centerCrop"
+                            android:visibility="gone" />
+
+                    </LinearLayout>
+
+                </android.support.v7.widget.CardView>
+
+                <View
+                    android:layout_width="@dimen/puzzle_45_spacing"
+                    android:layout_height="match_parent" />
+
+                <android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+                    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    card_view:cardBackgroundColor="@color/transparent"
+                    card_view:cardCornerRadius="@dimen/puzzle_card_radius"
+                    card_view:cardElevation="@dimen/puzzle_card_elevation">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:gravity="center"
+                        android:orientation="vertical">
+
+                        <RelativeLayout
+                            android:id="@+id/pl2"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:background="@color/puzzle_card_loading_background"
+                            android:gravity="center">
+
+                            <ProgressBar
+                                android:id="@+id/pb2"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:background="@drawable/progress_bar_circle" />
+
+                        </RelativeLayout>
+
+                        <ImageView
+                            android:id="@+id/iv2"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:contentDescription="@string/blank"
+                            android:scaleType="centerCrop"
+                            android:visibility="gone" />
+
+                    </LinearLayout>
+
+                </android.support.v7.widget.CardView>
+
+                <View
+                    android:layout_width="@dimen/puzzle_45_spacing"
+                    android:layout_height="match_parent" />
+
+                <android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+                    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    card_view:cardBackgroundColor="@color/transparent"
+                    card_view:cardCornerRadius="@dimen/puzzle_card_radius"
+                    card_view:cardElevation="@dimen/puzzle_card_elevation">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:gravity="center"
+                        android:orientation="vertical">
+
+                        <RelativeLayout
+                            android:id="@+id/pl3"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:background="@color/puzzle_card_loading_background"
+                            android:gravity="center">
+
+                            <ProgressBar
+                                android:id="@+id/pb3"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:background="@drawable/progress_bar_circle" />
+
+                        </RelativeLayout>
+
+                        <ImageView
+                            android:id="@+id/iv3"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:background="@drawable/border"
+                            android:contentDescription="@string/blank"
+                            android:scaleType="centerCrop"
+                            android:visibility="gone" />
+
+                    </LinearLayout>
+
+                </android.support.v7.widget.CardView>
+
+                <View
+                    android:layout_width="@dimen/puzzle_45_spacing"
+                    android:layout_height="match_parent" />
+
+                <android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+                    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    card_view:cardBackgroundColor="@color/transparent"
+                    card_view:cardCornerRadius="@dimen/puzzle_card_radius"
+                    card_view:cardElevation="@dimen/puzzle_card_elevation">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:gravity="center"
+                        android:orientation="vertical">
+
+                        <RelativeLayout
+                            android:id="@+id/pl4"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:background="@color/puzzle_card_loading_background"
+                            android:gravity="center">
+
+                            <ProgressBar
+                                android:id="@+id/pb4"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:background="@drawable/progress_bar_circle" />
+
+                        </RelativeLayout>
+
+                        <ImageView
+                            android:id="@+id/iv4"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:background="@drawable/border"
+                            android:contentDescription="@string/blank"
+                            android:scaleType="centerCrop"
+                            android:visibility="gone" />
+
+                    </LinearLayout>
+
+                </android.support.v7.widget.CardView>
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/puzzle_45_spacing" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:baselineAligned="false"
+                android:orientation="horizontal">
+
+                <android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+                    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    card_view:cardBackgroundColor="@color/transparent"
+                    card_view:cardCornerRadius="@dimen/puzzle_card_radius"
+                    card_view:cardElevation="@dimen/puzzle_card_elevation">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:gravity="center"
+                        android:orientation="vertical">
+
+                        <RelativeLayout
+                            android:id="@+id/pl5"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:background="@color/puzzle_card_loading_background"
+                            android:gravity="center">
+
+                            <ProgressBar
+                                android:id="@+id/pb5"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:background="@drawable/progress_bar_circle" />
+
+                        </RelativeLayout>
+
+                        <ImageView
+                            android:id="@+id/iv5"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:background="@drawable/border"
+                            android:contentDescription="@string/blank"
+                            android:scaleType="centerCrop"
+                            android:visibility="gone" />
+
+                    </LinearLayout>
+
+                </android.support.v7.widget.CardView>
+
+                <View
+                    android:layout_width="@dimen/puzzle_45_spacing"
+                    android:layout_height="match_parent" />
+
+                <android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+                    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    card_view:cardBackgroundColor="@color/transparent"
+                    card_view:cardCornerRadius="@dimen/puzzle_card_radius"
+                    card_view:cardElevation="@dimen/puzzle_card_elevation">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:gravity="center"
+                        android:orientation="vertical">
+
+                        <RelativeLayout
+                            android:id="@+id/pl6"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:background="@color/puzzle_card_loading_background"
+                            android:gravity="center">
+
+                            <ProgressBar
+                                android:id="@+id/pb6"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:background="@drawable/progress_bar_circle" />
+
+                        </RelativeLayout>
+
+                        <ImageView
+                            android:id="@+id/iv6"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:background="@drawable/border"
+                            android:contentDescription="@string/blank"
+                            android:scaleType="centerCrop"
+                            android:visibility="gone" />
+
+                    </LinearLayout>
+
+                </android.support.v7.widget.CardView>
+
+                <View
+                    android:layout_width="@dimen/puzzle_45_spacing"
+                    android:layout_height="match_parent" />
+
+                <android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+                    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    card_view:cardBackgroundColor="@color/transparent"
+                    card_view:cardCornerRadius="@dimen/puzzle_card_radius"
+                    card_view:cardElevation="@dimen/puzzle_card_elevation">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:gravity="center"
+                        android:orientation="vertical">
+
+                        <RelativeLayout
+                            android:id="@+id/pl7"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:background="@color/puzzle_card_loading_background"
+                            android:gravity="center">
+
+                            <ProgressBar
+                                android:id="@+id/pb7"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:background="@drawable/progress_bar_circle" />
+
+                        </RelativeLayout>
+
+                        <ImageView
+                            android:id="@+id/iv7"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:background="@drawable/border"
+                            android:contentDescription="@string/blank"
+                            android:scaleType="centerCrop"
+                            android:visibility="gone" />
+
+                    </LinearLayout>
+
+                </android.support.v7.widget.CardView>
+
+                <View
+                    android:layout_width="@dimen/puzzle_45_spacing"
+                    android:layout_height="match_parent" />
+
+                <android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+                    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    card_view:cardBackgroundColor="@color/transparent"
+                    card_view:cardCornerRadius="@dimen/puzzle_card_radius"
+                    card_view:cardElevation="@dimen/puzzle_card_elevation">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:gravity="center"
+                        android:orientation="vertical">
+
+                        <RelativeLayout
+                            android:id="@+id/pl8"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:background="@color/puzzle_card_loading_background"
+                            android:gravity="center">
+
+                            <ProgressBar
+                                android:id="@+id/pb8"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:background="@drawable/progress_bar_circle" />
+
+                        </RelativeLayout>
+
+                        <ImageView
+                            android:id="@+id/iv8"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:background="@drawable/border"
+                            android:contentDescription="@string/blank"
+                            android:scaleType="centerCrop"
+                            android:visibility="gone" />
+
+                    </LinearLayout>
+
+                </android.support.v7.widget.CardView>
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/puzzle_45_spacing" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:baselineAligned="false"
+                android:orientation="horizontal">
+
+                <android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+                    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    card_view:cardBackgroundColor="@color/transparent"
+                    card_view:cardCornerRadius="@dimen/puzzle_card_radius"
+                    card_view:cardElevation="@dimen/puzzle_card_elevation">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:gravity="center"
+                        android:orientation="vertical">
+
+                        <RelativeLayout
+                            android:id="@+id/pl9"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:background="@color/puzzle_card_loading_background"
+                            android:gravity="center">
+
+                            <ProgressBar
+                                android:id="@+id/pb9"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:background="@drawable/progress_bar_circle" />
+
+                        </RelativeLayout>
+
+                        <ImageView
+                            android:id="@+id/iv9"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:contentDescription="@string/blank"
+                            android:scaleType="centerCrop"
+                            android:visibility="gone" />
+
+                    </LinearLayout>
+
+                </android.support.v7.widget.CardView>
+
+                <View
+                    android:layout_width="@dimen/puzzle_45_spacing"
+                    android:layout_height="match_parent" />
+
+                <android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+                    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    card_view:cardBackgroundColor="@color/transparent"
+                    card_view:cardCornerRadius="@dimen/puzzle_card_radius"
+                    card_view:cardElevation="@dimen/puzzle_card_elevation">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:gravity="center"
+                        android:orientation="vertical">
+
+                        <RelativeLayout
+                            android:id="@+id/pl10"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:background="@color/puzzle_card_loading_background"
+                            android:gravity="center">
+
+                            <ProgressBar
+                                android:id="@+id/pb10"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:background="@drawable/progress_bar_circle" />
+
+                        </RelativeLayout>
+
+                        <ImageView
+                            android:id="@+id/iv10"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:background="@drawable/border"
+                            android:contentDescription="@string/blank"
+                            android:scaleType="centerCrop"
+                            android:visibility="gone" />
+
+                    </LinearLayout>
+
+                </android.support.v7.widget.CardView>
+
+                <View
+                    android:layout_width="@dimen/puzzle_45_spacing"
+                    android:layout_height="match_parent" />
+
+                <android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+                    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    card_view:cardBackgroundColor="@color/transparent"
+                    card_view:cardCornerRadius="@dimen/puzzle_card_radius"
+                    card_view:cardElevation="@dimen/puzzle_card_elevation">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:gravity="center"
+                        android:orientation="vertical">
+
+                        <RelativeLayout
+                            android:id="@+id/pl11"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:background="@color/puzzle_card_loading_background"
+                            android:gravity="center">
+
+                            <ProgressBar
+                                android:id="@+id/pb11"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:background="@drawable/progress_bar_circle" />
+
+                        </RelativeLayout>
+
+                        <ImageView
+                            android:id="@+id/iv11"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:background="@drawable/border"
+                            android:contentDescription="@string/blank"
+                            android:scaleType="centerCrop"
+                            android:visibility="gone" />
+
+                    </LinearLayout>
+
+                </android.support.v7.widget.CardView>
+
+                <View
+                    android:layout_width="@dimen/puzzle_45_spacing"
+                    android:layout_height="match_parent" />
+
+                <android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+                    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    card_view:cardBackgroundColor="@color/transparent"
+                    card_view:cardCornerRadius="@dimen/puzzle_card_radius"
+                    card_view:cardElevation="@dimen/puzzle_card_elevation">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:gravity="center"
+                        android:orientation="vertical">
+
+                        <RelativeLayout
+                            android:id="@+id/pl12"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:background="@color/puzzle_card_loading_background"
+                            android:gravity="center">
+
+                            <ProgressBar
+                                android:id="@+id/pb12"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:background="@drawable/progress_bar_circle" />
+
+                        </RelativeLayout>
+
+                        <ImageView
+                            android:id="@+id/iv12"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:background="@drawable/border"
+                            android:contentDescription="@string/blank"
+                            android:scaleType="centerCrop"
+                            android:visibility="gone" />
+
+                    </LinearLayout>
+
+                </android.support.v7.widget.CardView>
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/puzzle_45_spacing" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:baselineAligned="false"
+                android:orientation="horizontal">
+
+                <android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+                    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    card_view:cardBackgroundColor="@color/transparent"
+                    card_view:cardCornerRadius="@dimen/puzzle_card_radius"
+                    card_view:cardElevation="@dimen/puzzle_card_elevation">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:gravity="center"
+                        android:orientation="vertical">
+
+                        <RelativeLayout
+                            android:id="@+id/pl13"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:background="@color/puzzle_card_loading_background"
+                            android:gravity="center">
+
+                            <ProgressBar
+                                android:id="@+id/pb13"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:background="@drawable/progress_bar_circle" />
+
+                        </RelativeLayout>
+
+                        <ImageView
+                            android:id="@+id/iv13"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:background="@drawable/border"
+                            android:contentDescription="@string/blank"
+                            android:scaleType="centerCrop"
+                            android:visibility="gone" />
+
+                    </LinearLayout>
+
+                </android.support.v7.widget.CardView>
+
+                <View
+                    android:layout_width="@dimen/puzzle_45_spacing"
+                    android:layout_height="match_parent" />
+
+                <android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+                    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    card_view:cardBackgroundColor="@color/transparent"
+                    card_view:cardCornerRadius="@dimen/puzzle_card_radius"
+                    card_view:cardElevation="@dimen/puzzle_card_elevation">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:gravity="center"
+                        android:orientation="vertical">
+
+                        <RelativeLayout
+                            android:id="@+id/pl14"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:background="@color/puzzle_card_loading_background"
+                            android:gravity="center">
+
+                            <ProgressBar
+                                android:id="@+id/pb14"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:background="@drawable/progress_bar_circle" />
+
+                        </RelativeLayout>
+
+                        <ImageView
+                            android:id="@+id/iv14"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:background="@drawable/border"
+                            android:contentDescription="@string/blank"
+                            android:scaleType="centerCrop"
+                            android:visibility="gone" />
+
+                    </LinearLayout>
+
+                </android.support.v7.widget.CardView>
+
+                <View
+                    android:layout_width="@dimen/puzzle_45_spacing"
+                    android:layout_height="match_parent" />
+
+                <android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+                    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    card_view:cardBackgroundColor="@color/transparent"
+                    card_view:cardCornerRadius="@dimen/puzzle_card_radius"
+                    card_view:cardElevation="@dimen/puzzle_card_elevation">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:gravity="center"
+                        android:orientation="vertical">
+
+                        <RelativeLayout
+                            android:id="@+id/pl15"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:background="@color/puzzle_card_loading_background"
+                            android:gravity="center">
+
+                            <ProgressBar
+                                android:id="@+id/pb15"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:background="@drawable/progress_bar_circle" />
+
+                        </RelativeLayout>
+
+                        <ImageView
+                            android:id="@+id/iv15"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:background="@drawable/border"
+                            android:contentDescription="@string/blank"
+                            android:scaleType="centerCrop"
+                            android:visibility="gone" />
+
+                    </LinearLayout>
+
+                </android.support.v7.widget.CardView>
+
+                <View
+                    android:layout_width="@dimen/puzzle_45_spacing"
+                    android:layout_height="match_parent" />
+
+                <android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+                    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    card_view:cardBackgroundColor="@color/transparent"
+                    card_view:cardCornerRadius="@dimen/puzzle_card_radius"
+                    card_view:cardElevation="@dimen/puzzle_card_elevation">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:gravity="center"
+                        android:orientation="vertical">
+
+                        <RelativeLayout
+                            android:id="@+id/pl16"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:background="@color/puzzle_card_loading_background"
+                            android:gravity="center">
+
+                            <ProgressBar
+                                android:id="@+id/pb16"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:background="@drawable/progress_bar_circle" />
+
+                        </RelativeLayout>
+
+                        <ImageView
+                            android:id="@+id/iv16"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:background="@drawable/border"
+                            android:contentDescription="@string/blank"
+                            android:scaleType="centerCrop"
+                            android:visibility="gone" />
+
+                    </LinearLayout>
+
+                </android.support.v7.widget.CardView>
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/puzzle_45_spacing" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:baselineAligned="false"
+                android:orientation="horizontal">
+
+                <android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+                    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    card_view:cardBackgroundColor="@color/transparent"
+                    card_view:cardCornerRadius="@dimen/puzzle_card_radius"
+                    card_view:cardElevation="@dimen/puzzle_card_elevation">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:gravity="center"
+                        android:orientation="vertical">
+
+                        <RelativeLayout
+                            android:id="@+id/pl17"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:background="@color/puzzle_card_loading_background"
+                            android:gravity="center">
+
+                            <ProgressBar
+                                android:id="@+id/pb17"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:background="@drawable/progress_bar_circle" />
+
+                        </RelativeLayout>
+
+                        <ImageView
+                            android:id="@+id/iv17"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:background="@drawable/border"
+                            android:contentDescription="@string/blank"
+                            android:scaleType="centerCrop"
+                            android:visibility="gone" />
+
+                    </LinearLayout>
+
+                </android.support.v7.widget.CardView>
+
+                <View
+                    android:layout_width="@dimen/puzzle_45_spacing"
+                    android:layout_height="match_parent" />
+
+                <android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+                    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    card_view:cardBackgroundColor="@color/transparent"
+                    card_view:cardCornerRadius="@dimen/puzzle_card_radius"
+                    card_view:cardElevation="@dimen/puzzle_card_elevation">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:gravity="center"
+                        android:orientation="vertical">
+
+                        <RelativeLayout
+                            android:id="@+id/pl18"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:background="@color/puzzle_card_loading_background"
+                            android:gravity="center">
+
+                            <ProgressBar
+                                android:id="@+id/pb18"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:background="@drawable/progress_bar_circle" />
+
+                        </RelativeLayout>
+
+                        <ImageView
+                            android:id="@+id/iv18"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:background="@drawable/border"
+                            android:contentDescription="@string/blank"
+                            android:scaleType="centerCrop"
+                            android:visibility="gone" />
+
+                    </LinearLayout>
+
+                </android.support.v7.widget.CardView>
+
+                <View
+                    android:layout_width="@dimen/puzzle_45_spacing"
+                    android:layout_height="match_parent" />
+
+                <android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+                    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    card_view:cardBackgroundColor="@color/transparent"
+                    card_view:cardCornerRadius="@dimen/puzzle_card_radius"
+                    card_view:cardElevation="@dimen/puzzle_card_elevation">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:gravity="center"
+                        android:orientation="vertical">
+
+                        <RelativeLayout
+                            android:id="@+id/pl19"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:background="@color/puzzle_card_loading_background"
+                            android:gravity="center">
+
+                            <ProgressBar
+                                android:id="@+id/pb19"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:background="@drawable/progress_bar_circle" />
+
+                        </RelativeLayout>
+
+                        <ImageView
+                            android:id="@+id/iv19"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:background="@drawable/border"
+                            android:contentDescription="@string/blank"
+                            android:scaleType="centerCrop"
+                            android:visibility="gone" />
+
+                    </LinearLayout>
+
+                </android.support.v7.widget.CardView>
+
+                <View
+                    android:layout_width="@dimen/puzzle_45_spacing"
+                    android:layout_height="match_parent" />
+
+                <android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+                    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    card_view:cardBackgroundColor="@color/transparent"
+                    card_view:cardCornerRadius="@dimen/puzzle_card_radius"
+                    card_view:cardElevation="@dimen/puzzle_card_elevation">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:gravity="center"
+                        android:orientation="vertical">
+
+                        <RelativeLayout
+                            android:id="@+id/pl20"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:background="@color/puzzle_card_loading_background"
+                            android:gravity="center">
+
+                            <ProgressBar
+                                android:id="@+id/pb20"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:background="@drawable/progress_bar_circle" />
+
+                        </RelativeLayout>
+
+                        <ImageView
+                            android:id="@+id/iv20"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:background="@drawable/border"
+                            android:contentDescription="@string/blank"
+                            android:scaleType="centerCrop"
+                            android:visibility="gone" />
+
+                    </LinearLayout>
+
+                </android.support.v7.widget.CardView>
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</RelativeLayout>

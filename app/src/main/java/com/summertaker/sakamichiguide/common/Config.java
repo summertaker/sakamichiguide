@@ -38,6 +38,7 @@ public class Config {
     public final static String MAIN_ACTION_MEMORY = "MEMORY";
     public final static String MAIN_ACTION_QUIZ = "QUIZ";
     public final static String MAIN_ACTION_RAW_PHOTO = "RAW_PHOTO";
+    public final static String MAIN_ACTION_PUZZLE = "PUZZLE";
     public final static String MAIN_ACTION_OSHIMEN = "OSHIMEN";
 
     public final static String TOOLBAR_ICON_LOGO = "logo";
@@ -58,6 +59,10 @@ public class Config {
     public final static String SITE_ID_STAGE48 = "stage48";
     public final static String SITE_ID_GOOGLE_IMAGE_SEARCH = "googleImageSearch";
     public final static String SITE_ID_YAHOO_IMAGE_SEARCH = "yahooImageSearch";
+
+    public final static String PUZZLE_LEVEL_EASY = "easy";
+    public final static String PUZZLE_LEVEL_NORMAL = "normal";
+    public final static String PUZZLE_LEVEL_HARD = "hard";
 
     /*public final static int IMAGE_FULL_WIDTH = 480;
     public final static int IMAGE_FULL_HEIGHT = 480;

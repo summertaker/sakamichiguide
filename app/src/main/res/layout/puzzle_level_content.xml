@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center_horizontal"
+    android:orientation="vertical"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:context="com.summertaker.sakamichiguide.puzzle.PuzzleLevelActivity"
+    tools:showIn="@layout/puzzle_level_activity">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="20dp"
+        android:layout_marginTop="30dp"
+        android:text="@string/select_the_level"
+        android:textStyle="bold" />
+
+    <View
+        android:layout_width="300dp"
+        android:layout_height="1dp"
+        android:background="#ccc" />
+
+    <Button
+        android:id="@+id/btnEasy"
+        style="@style/SuccessSmallButton"
+        android:layout_width="120dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:padding="11dp"
+        android:text="@string/level_easy" />
+
+    <Button
+        android:id="@+id/btnNormal"
+        style="@style/WarningSmallButton"
+        android:layout_width="120dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:padding="11dp"
+        android:text="@string/level_normal" />
+
+    <Button
+        android:id="@+id/btnHard"
+        style="@style/DangerSmallButton"
+        android:layout_width="120dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:padding="11dp"
+        android:text="@string/level_hard" />
+
+    <!--<Button
+        android:layout_width="160dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:text="@string/level_easy"
+        android:theme="@style/AppCompatSuccessButton" />
+
+    <Button
+        android:layout_width="160dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:text="@string/level_normal"
+        android:theme="@style/AppCompatWarningButton" />
+
+    <Button
+        android:layout_width="160dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:text="@string/level_hard"
+        android:theme="@style/AppCompatDangerButton" />-->
+
+</LinearLayout>

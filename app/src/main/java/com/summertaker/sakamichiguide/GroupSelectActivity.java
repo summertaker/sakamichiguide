@@ -18,6 +18,7 @@ import com.summertaker.sakamichiguide.data.DataManager;
 import com.summertaker.sakamichiguide.data.GroupData;
 import com.summertaker.sakamichiguide.member.MemberListActivity;
 import com.summertaker.sakamichiguide.member.TeamListActivity;
+import com.summertaker.sakamichiguide.puzzle.PuzzleLevelActivity;
 import com.summertaker.sakamichiguide.quiz.MemoryActivity;
 import com.summertaker.sakamichiguide.quiz.QuizActivity;
 import com.summertaker.sakamichiguide.quiz.SlideActivity;
@@ -150,6 +151,9 @@ public class GroupSelectActivity extends BaseActivity {
                 break;
             case Config.MAIN_ACTION_RAW_PHOTO:
                 intent = new Intent(this, RawPhotoSelectActivity.class);
+                break;
+            case Config.MAIN_ACTION_PUZZLE:
+                intent = new Intent(this, PuzzleLevelActivity.class);
                 break;
         }
         //intent = new Intent(this, QuizResultActivity.class);
