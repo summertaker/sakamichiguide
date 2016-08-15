@@ -180,8 +180,6 @@
     <string name="select_the_blog">Select the blog</string>
     <string name="select_none">Select none</string>
     <string name="please_wait">Please wait.</string>
-    <string name="title_activity_puzzle">PuzzleActivity</string>
-    <string name="title_activity_puzzle_level">PuzzleLevelActivity</string>
     <string name="select_the_level">Select the level.</string>
     <string name="level_easy">Easy</string>
     <string name="level_normal">Normal</string>

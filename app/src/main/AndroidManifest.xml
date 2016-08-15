@@ -175,12 +175,14 @@
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".puzzle.PuzzleActivity"
-            android:label="@string/title_activity_puzzle"
+            android:label="@string/app_name"
+            android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".puzzle.PuzzleLevelActivity"
-            android:label="@string/title_activity_puzzle_level"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:label="@string/app_name"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar" />
     </application>
 
 </manifest>

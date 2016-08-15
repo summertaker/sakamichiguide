@@ -2,7 +2,7 @@ package com.summertaker.sakamichiguide.common;
 
 public class Config {
     public final static String PLATFORM = "android-phone";
-    public final static String VERSION = "3.3";
+    public final static String VERSION = "3.5";
 
     public final static String PACKAGE_NAME = "com.summertaker.sakamichiguide";
     public final static String USER_PREFERENCE_KEY = PACKAGE_NAME;

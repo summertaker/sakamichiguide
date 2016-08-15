@@ -8,8 +8,8 @@ android {
         applicationId "com.summertaker.sakamichiguide"
         minSdkVersion 17
         targetSdkVersion 24
-        versionCode 25
-        versionName "3.4"
+        versionCode 26
+        versionName "3.5"
     }
     buildTypes {
         release {
