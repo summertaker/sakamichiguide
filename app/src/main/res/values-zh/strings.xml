@@ -185,5 +185,7 @@
     <string name="level_hard">困难</string>
     <string name="level_easy">简单</string>
     <string name="puzzle">难题</string>
+    <string name="s_minute">%s分钟</string>
+    <string name="s_second">%s秒</string>
 
 </resources>

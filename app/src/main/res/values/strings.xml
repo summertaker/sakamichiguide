@@ -185,5 +185,7 @@
     <string name="level_normal">Normal</string>
     <string name="level_hard">Hard</string>
     <string name="puzzle">Puzzle</string>
+    <string name="s_minute">%s minute</string>
+    <string name="s_second">%s second</string>
 
 </resources>

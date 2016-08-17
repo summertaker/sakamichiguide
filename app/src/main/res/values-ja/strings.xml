@@ -185,5 +185,7 @@
     <string name="level_hard">ハード</string>
     <string name="level_normal">ノーマル</string>
     <string name="puzzle">パズル</string>
+    <string name="s_minute">%s分</string>
+    <string name="s_second">%s秒</string>
 
 </resources>

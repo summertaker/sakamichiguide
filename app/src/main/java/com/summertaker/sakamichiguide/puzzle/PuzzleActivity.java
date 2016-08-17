@@ -5,6 +5,7 @@ import android.animation.AnimatorSet;
 import android.animation.ObjectAnimator;
 import android.content.Intent;
 import android.graphics.Bitmap;
+import android.graphics.Color;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 import android.graphics.drawable.TransitionDrawable;
@@ -13,9 +14,10 @@ import android.os.CountDownTimer;
 import android.os.Handler;
 import android.support.design.widget.Snackbar;
 import android.support.v4.content.ContextCompat;
+import android.support.v7.widget.CardView;
 import android.util.Log;
+import android.view.Gravity;
 import android.view.View;
-import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -38,7 +40,6 @@ import com.summertaker.sakamichiguide.common.Config;
 import com.summertaker.sakamichiguide.data.GroupData;
 import com.summertaker.sakamichiguide.data.MemberData;
 import com.summertaker.sakamichiguide.data.TeamData;
-import com.summertaker.sakamichiguide.member.MemberListActivity;
 import com.summertaker.sakamichiguide.parser.BaseParser;
 import com.summertaker.sakamichiguide.util.Util;
 
@@ -67,24 +68,18 @@ public class PuzzleActivity extends BaseActivity {
     TextView mTvResultTimer;
     Button mBtnResultOk;
 
-    int mCount = 0;
-    int mTotal = 30;
+    int mCardCount = 0;
+    int mCardTotal = 30;
     int mTimeCount = 0;
-
-    ImageView[] mImageViews = new ImageView[mTotal];
-    TransitionDrawable[] mTransitions = new TransitionDrawable[mTotal];
-
-    int[] mIvIndexes = {R.id.iv1, R.id.iv2, R.id.iv3, R.id.iv4, R.id.iv5, R.id.iv6, R.id.iv7, R.id.iv8, R.id.iv9, R.id.iv10,
-            R.id.iv11, R.id.iv12, R.id.iv13, R.id.iv14, R.id.iv15, R.id.iv16, R.id.iv17, R.id.iv18, R.id.iv19, R.id.iv20,
-            R.id.iv21, R.id.iv22, R.id.iv23, R.id.iv24, R.id.iv25, R.id.iv26, R.id.iv27, R.id.iv28, R.id.iv29, R.id.iv30};
-    int[] mPlIndexes = {R.id.pl1, R.id.pl2, R.id.pl3, R.id.pl4, R.id.pl5, R.id.pl6, R.id.pl7, R.id.pl8, R.id.pl9, R.id.pl10,
-            R.id.pl11, R.id.pl12, R.id.pl13, R.id.pl14, R.id.pl15, R.id.pl16, R.id.pl17, R.id.pl18, R.id.pl19, R.id.pl20,
-            R.id.pl21, R.id.pl22, R.id.pl23, R.id.pl24, R.id.pl25, R.id.pl26, R.id.pl27, R.id.pl28, R.id.pl29, R.id.pl30};
-    int[] mPbIndexes = {R.id.pb1, R.id.pb2, R.id.pb3, R.id.pb4, R.id.pb5, R.id.pb6, R.id.pb7, R.id.pb8, R.id.pb9, R.id.pb10,
-            R.id.pb11, R.id.pb12, R.id.pb13, R.id.pb14, R.id.pb15, R.id.pb16, R.id.pb17, R.id.pb18, R.id.pb19, R.id.pb20,
-            R.id.pb21, R.id.pb22, R.id.pb23, R.id.pb24, R.id.pb25, R.id.pb26, R.id.pb27, R.id.pb28, R.id.pb29, R.id.pb30};
-
     int mCardBackground = 0;
+
+    int[] mCardViewIndexes = {R.id.cv1, R.id.cv2, R.id.cv3, R.id.cv4, R.id.cv5, R.id.cv6, R.id.cv7, R.id.cv8, R.id.cv9, R.id.cv10,
+            R.id.cv11, R.id.cv12, R.id.cv13, R.id.cv14, R.id.cv15, R.id.cv16, R.id.cv17, R.id.cv18, R.id.cv19, R.id.cv20,
+            R.id.cv21, R.id.cv22, R.id.cv23, R.id.cv24, R.id.cv25, R.id.cv26, R.id.cv27, R.id.cv28, R.id.cv29, R.id.cv30};
+
+    TextView[] mTextViews = new TextView[mCardTotal];
+    ImageView[] mImageViews = new ImageView[mCardTotal];
+    TransitionDrawable[] mTransitions = new TransitionDrawable[mCardTotal];
 
     Handler mHandler;
     Runnable mRunnable;
@@ -116,15 +111,15 @@ public class PuzzleActivity extends BaseActivity {
         switch (mLevel) {
             case Config.PUZZLE_LEVEL_EASY:
                 setContentView(R.layout.puzzle_easy_activity);
-                mTotal = 12;
+                mCardTotal = 12;
                 break;
             case Config.PUZZLE_LEVEL_HARD:
                 setContentView(R.layout.puzzle_hard_activity);
-                mTotal = 30;
+                mCardTotal = 30;
                 break;
             default:
                 setContentView(R.layout.puzzle_normal_activity);
-                mTotal = 20;
+                mCardTotal = 20;
                 break;
         }
 
@@ -153,6 +148,61 @@ public class PuzzleActivity extends BaseActivity {
                 doFinish();
             }
         });
+
+        RelativeLayout.LayoutParams mm = new RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.MATCH_PARENT, RelativeLayout.LayoutParams.MATCH_PARENT);
+        RelativeLayout.LayoutParams ww = new RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.WRAP_CONTENT, RelativeLayout.LayoutParams.WRAP_CONTENT);
+        RelativeLayout.LayoutParams mw = new RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.MATCH_PARENT, RelativeLayout.LayoutParams.WRAP_CONTENT);
+        mw.addRule(RelativeLayout.ALIGN_PARENT_BOTTOM);
+
+        int padding = mLevel.equals(Config.PUZZLE_LEVEL_NORMAL) ? 0 : 3;
+        float density = mResources.getDisplayMetrics().density;
+        int dp = (int) (padding * density);
+
+        for (int i = 0; i < mCardTotal; i++) {
+
+            CardView cv = (CardView) findViewById(mCardViewIndexes[i]);
+
+            /*RelativeLayout pl = new RelativeLayout(mContext);
+            pl.setLayoutParams(match);
+            pl.setBackgroundColor(ContextCompat.getColor(mContext, R.color.puzzle_card_loading_background));
+            pl.setGravity(Gravity.CENTER);
+            mLoadings[i] = pl;
+
+            ProgressBar pb = new ProgressBar(mContext);
+            pb.setLayoutParams(wrap);
+            pb.setBackground(ContextCompat.getDrawable(mContext, R.drawable.progress_bar_circle));
+            Util.setProgressBarColor(pb, Config.PROGRESS_BAR_COLOR_LIGHT, null);
+
+            pl.addView(pb);
+            cv.addView(pl);*/
+
+            RelativeLayout rl = new RelativeLayout(mContext);
+            rl.setLayoutParams(mm);
+            //pl.setBackgroundColor(ContextCompat.getColor(mContext, R.color.puzzle_card_loading_background));
+            //pl.setGravity(Gravity.CENTER);
+
+            ImageView iv = new ImageView(mContext);
+            iv.setLayoutParams(mm);
+            //iv.setVisibility(View.GONE);
+            iv.setScaleType(ImageView.ScaleType.CENTER_CROP);
+            mImageViews[i] = iv;
+            rl.addView(iv);
+
+            if (!mLevel.equals(Config.PUZZLE_LEVEL_HARD)) {
+                TextView tv = new TextView(mContext);
+                tv.setLayoutParams(mw);
+                tv.setGravity(Gravity.CENTER);
+                tv.setTextColor(Color.WHITE);
+                tv.setPadding(0, dp, 0, dp);
+                tv.setText(getString(R.string.app_name));
+                tv.setBackgroundColor(Color.parseColor("#88000000"));
+                tv.setVisibility(View.GONE);
+                mTextViews[i] = tv;
+                rl.addView(tv);
+            }
+
+            cv.addView(rl);
+        }
 
         String url = mGroupData.getUrl();
         String userAgent = Config.USER_AGENT_WEB;
@@ -219,7 +269,7 @@ public class PuzzleActivity extends BaseActivity {
     }
 
     private void renderData() {
-        mPbLoading.setVisibility(View.GONE);
+        //mPbLoading.setVisibility(View.GONE);
 
         //String team = getString(R.string.team);
         //String trainee = getString(R.string.trainee);
@@ -227,25 +277,23 @@ public class PuzzleActivity extends BaseActivity {
         if (mGroupMemberList.size() == 0) {
             alertNetworkErrorAndFinish(mErrorMessage);
         } else {
-            LinearLayout grid = (LinearLayout) findViewById(R.id.grid);
-            grid.setVisibility(View.VISIBLE);
+            //LinearLayout grid = (LinearLayout) findViewById(R.id.grid);
+            //grid.setVisibility(View.VISIBLE);
 
             Collections.shuffle(mGroupMemberList);
 
             int count = 0;
-            int total = mTotal / 2;
+            int total = mCardTotal / 2;
             for (int i = 0; i < total; i++) {
                 MemberData oldData = mGroupMemberList.get(i);
 
                 MemberData data1 = new MemberData();
-                data1.setId(count + "");
                 data1.setName(oldData.getName());
                 data1.setThumbnailUrl(oldData.getThumbnailUrl());
                 mMemberList.add(data1);
                 count++;
 
                 MemberData data2 = new MemberData();
-                data2.setId(count + "");
                 data2.setName(oldData.getName());
                 data2.setThumbnailUrl(oldData.getThumbnailUrl());
                 mMemberList.add(data2);
@@ -256,18 +304,18 @@ public class PuzzleActivity extends BaseActivity {
             Collections.shuffle(mMemberList);
             Collections.shuffle(mMemberList);
 
-            for (int i = 0; i < mTotal; i++) {
+            for (int i = 0; i < mCardTotal; i++) {
 
+                final int index = i;
                 MemberData memberData = mMemberList.get(i);
-                final int index = Integer.parseInt(memberData.getId());
-                //Log.e(mTag, "index: " + index);
+                memberData.setId(index + "");
+                //Log.e(mTag, index + ". " + memberData.getName());
 
-                final RelativeLayout pl = (RelativeLayout) findViewById(mPlIndexes[i]);
-                final ProgressBar pb = (ProgressBar) findViewById(mPbIndexes[i]);
-                Util.setProgressBarColor(pb, Config.PROGRESS_BAR_COLOR_LIGHT, null);
-
-                mImageViews[index] = (ImageView) findViewById(mIvIndexes[i]);
                 mImageViews[index].setTag(memberData);
+
+                if (!mLevel.equals(Config.PUZZLE_LEVEL_HARD)) {
+                    mTextViews[index].setText(memberData.getName());
+                }
 
                 String imageUrl = memberData.getThumbnailUrl();
                 Glide.with(mContext).load(imageUrl).asBitmap().dontAnimate() //.diskCacheStrategy(DiskCacheStrategy.RESULT)
@@ -275,26 +323,20 @@ public class PuzzleActivity extends BaseActivity {
                         .into(new SimpleTarget<Bitmap>() {
                             @Override
                             public void onResourceReady(Bitmap bitmap, GlideAnimation glideAnimation) {
-                                //holder.loLoading.setVisibility(View.GONE);
-                                //holder.ivPicture.setImageBitmap(bitmap);
 
-                                pl.setVisibility(View.GONE);
-                                pb.setVisibility(View.GONE);
+                                //mLoadings[index].setVisibility(View.GONE);
 
                                 mTransitions[index] = new TransitionDrawable(new Drawable[]{
                                         ContextCompat.getDrawable(mContext, mCardBackground),
                                         new BitmapDrawable(getResources(), bitmap)
                                 });
                                 mImageViews[index].setImageDrawable(mTransitions[index]);
-                                mImageViews[index].setScaleType(ImageView.ScaleType.CENTER_CROP);
-                                mImageViews[index].setVisibility(View.VISIBLE);
+                                //mImageViews[index].setVisibility(View.VISIBLE);
 
-                                mCount++;
-                                onImageLoaded();
-
-                                //if (cacheUri == null) {
-                                //    ImageUtil.saveBitmapToPng(bitmap, cacheId); // 캐쉬 저장
-                                //}
+                                mCardCount++;
+                                if (mCardCount == mCardTotal) {
+                                    onImageLoaded();
+                                }
                             }
                         });
 
@@ -318,44 +360,24 @@ public class PuzzleActivity extends BaseActivity {
     }
 
     private void onImageLoaded() {
-        if (mCount == mTotal) {
-
-            mHandler = new Handler();
-            mRunnable = new Runnable() {
-                public void run() {
-                    removeCallback();
-                    renderPuzzle();
-                }
-            };
-            mHandler.postDelayed(mRunnable, 500);
-        }
+        mHandler = new Handler();
+        mRunnable = new Runnable() {
+            public void run() {
+                removeCallback();
+                renderPuzzle();
+            }
+        };
+        mHandler.postDelayed(mRunnable, 500);
     }
 
     private void renderPuzzle() {
-        for (int i = 0; i < mTotal; i++) {
-
-            ImageView imageView = mImageViews[i];
-
-            /*
-            MemberData memberData = (MemberData) imageView.getTag();
-            int index = Integer.parseInt(memberData.getId());
-
-            mTransitions[index] = new TransitionDrawable(new Drawable[]{
-                    ContextCompat.getDrawable(mContext, R.drawable.pattern_blossom),
-                    imageView.getDrawable()
-            });
-            imageView.setImageDrawable(mTransitions[index]);
-            //mTransitions[index].startTransition(0);
-            //mTransitions[index].reverseTransition(3000);
-            */
-
-            /*AnimatorSet ani = (AnimatorSet) AnimatorInflater.loadAnimator(mContext, R.animator.flip);
-            ani.setTarget(imageView);
-            ani.setDuration(500);
-            ani.start();*/
-
-            setEvent(imageView);
+        for (int i = 0; i < mCardTotal; i++) {
+            setEvent(mImageViews[i]);
         }
+
+        LinearLayout grid = (LinearLayout) findViewById(R.id.grid);
+        grid.setVisibility(View.VISIBLE);
+        mPbLoading.setVisibility(View.GONE);
 
         mResultTimer = new CountDownTimer(1000000000, 1000) {
 
@@ -366,9 +388,9 @@ public class PuzzleActivity extends BaseActivity {
                 if (mTvResultTimer != null) {
                     int min = mTimeCount / 60;
                     int sec = mTimeCount % 60;
-                    String text = sec + "초";
+                    String text = String.format(getString(R.string.s_second), sec);
                     if (min > 0) {
-                        text = min + "분 " + text;
+                        text = String.format(getString(R.string.s_minute), min) + " " + text;
                     }
                     mTvResultTimer.setText(text);
                 }
@@ -412,6 +434,7 @@ public class PuzzleActivity extends BaseActivity {
                         } else if (mSecondIndex == -1) {
                             if (mFirstIndex == index) {
                                 flip(index);
+                                mTextViews[index].setVisibility(View.GONE);
                                 mFirstIndex = -1;
                             } else {
                                 mSecondIndex = index;
@@ -452,6 +475,10 @@ public class PuzzleActivity extends BaseActivity {
         ani.setDuration(300);
         ani.start();
         mTransitions[i].reverseTransition(300);
+
+        if (!mLevel.equals(Config.PUZZLE_LEVEL_HARD)) {
+            mTextViews[i].setVisibility(View.VISIBLE);
+        }
     }
 
     private void setCorrect() {
@@ -472,7 +499,7 @@ public class PuzzleActivity extends BaseActivity {
         animation2.start();
 
         //Log.e(mTag, "mFounds.size(): " + mFounds.size());
-        if (mFounds.size() == mTotal) {
+        if (mFounds.size() == mCardTotal) {
             mResultTimer.cancel();
             mResultLayout.setVisibility(View.VISIBLE);
         }
@@ -490,6 +517,11 @@ public class PuzzleActivity extends BaseActivity {
         ani2.setDuration(400);
         ani2.start();
         mTransitions[mSecondIndex].reverseTransition(0);
+
+        if (!mLevel.equals(Config.PUZZLE_LEVEL_HARD)) {
+            mTextViews[mFirstIndex].setVisibility(View.GONE);
+            mTextViews[mSecondIndex].setVisibility(View.GONE);
+        }
     }
 
     @Override
@@ -512,54 +544,5 @@ public class PuzzleActivity extends BaseActivity {
         if (mHandler != null) {
             mHandler.removeCallbacks(mRunnable);
         }
-    }
-
-    private AdapterView.OnItemClickListener itemClickListener = new AdapterView.OnItemClickListener() {
-        @Override
-        public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-            TeamData teamData = (TeamData) parent.getItemAtPosition(position);
-            //MemberData memberData = (MemberData) teamData.getMemberData();
-            //Log.e(mTag, "memberData.getTeamName(): " + memberData.getTeamName());
-
-            ArrayList<MemberData> memberList = new ArrayList<>();
-            for (MemberData memberData : mGroupMemberList) {
-                if (memberData.getTeamName().equals(teamData.getName())) {
-                    //Log.e(mTag, ">> " + md.getTeamName());
-                    memberData.setGroupId(mGroupData.getId());
-                    memberList.add(memberData);
-                }
-            }
-            startMemberListActivity(teamData, memberList);
-        }
-    };
-
-    public void startMemberListActivity(TeamData teamData, ArrayList<MemberData> memberList) {
-        Intent intent = new Intent(this, MemberListActivity.class);
-        //Intent intent = new Intent(this, MemberRecyclerActivity.class);
-        intent.putExtra("groupData", mGroupData);
-        intent.putExtra("teamData", teamData);
-        intent.putExtra("memberList", memberList);
-
-        showToolbarProgressBar();
-
-        startActivityForResult(intent, 0);
-        overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
-    }
-
-    @Override
-    public void onActivityResult(int requestCode, int resultCode, Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-        //Log.e(mTag, "onActivityResult().resultCode: " + resultCode);
-
-        hideToolbarProgressBar();
-
-        if (resultCode == Config.RESULT_CODE_FINISH) {
-            Intent intent = new Intent();
-            //intent.putExtra("articleId", mArticleId);
-            setResult(Config.RESULT_CODE_FINISH, intent);
-            finish();
-        }
-
-        overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
     }
 }

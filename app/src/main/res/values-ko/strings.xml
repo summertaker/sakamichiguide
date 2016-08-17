@@ -185,5 +185,7 @@
     <string name="level_hard">어려움</string>
     <string name="level_normal">보통</string>
     <string name="puzzle">퍼즐</string>
+    <string name="s_minute">%s분</string>
+    <string name="s_second">%s초</string>
 
 </resources>
