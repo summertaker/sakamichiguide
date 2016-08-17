@@ -775,6 +775,9 @@ public class Nogizaka46Parser extends BaseParser {
             content = Util.removeSpace(content);
             //Log.e(mTag, content);
 
+            ArrayList<String> urls = new ArrayList<>();
+            ArrayList<String> imgs = new ArrayList<>();
+            ArrayList<String> dups = new ArrayList<>();
             for (Element img : entitybody.select("img")) {
                 //Log.e(mTag, a.html());
 
@@ -783,7 +786,20 @@ public class Nogizaka46Parser extends BaseParser {
                     continue;
                 }
 
-                thumbnailUrl += src + "*";
+                boolean exist = false;
+                for (String str : imgs) {
+                    if (src.equals(str)) {
+                        exist = true;
+                        dups.add(src);
+                        break;
+                    }
+                }
+
+                if (exist) {
+                    continue;
+                }
+                imgs.add(src);
+                //thumbnailUrl += src + "*";
 
                 // 이미지 보호장치 있음 - 그냥 웹 뷰로 이동시킬 것
                 // http://dcimg.awalker.jp/img1.php?id=phu2qg0Vf9cBKA4BKCZQ81j2pg07yhJsTMg9A100AdAgpABNlZWV5e9V3A6FWvSiKCcZB7FvYxNFOLuocFWp8LYkc0XhC2u3t81pNarOGlyqtuPV6FCw1WKtIqwG3fT8BCsMfPZbULPaLQtvcFkbr2TRw01VSoafd3WxO6RpxMR70kahY7KwfuKzhg2jkR1Zx40M7Nx1
@@ -794,7 +810,8 @@ public class Nogizaka46Parser extends BaseParser {
                 //if (!el.tagName().equals("a")) { // 큰 사진에는 링크가 걸려있음
                 //    continue;
                 //}
-                imageUrl = el.attr("href") + "*";
+                urls.add(el.attr("href"));
+                //imageUrl = el.attr("href") + "*";
 
                 //boolean exist = false;
                 //for (WebData webData : webDataList) {
@@ -803,6 +820,21 @@ public class Nogizaka46Parser extends BaseParser {
                 //        break;
                 //    }
                 //}
+            }
+
+            for (int j = 0; j < imgs.size(); j++) {
+                String img = imgs.get(j);
+                boolean valid = true;
+                for (String dup : dups) {
+                    if (img.equals(dup)) {
+                        valid = false;
+                        break;
+                    }
+                }
+                if (valid) {
+                    thumbnailUrl += img + "*";
+                    imageUrl = urls.get(j) + "*";
+                }
             }
 
             if (!thumbnailUrl.isEmpty()) {
