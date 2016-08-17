@@ -26,7 +26,7 @@ import com.summertaker.sakamichiguide.common.ImageViewActivity;
 import com.summertaker.sakamichiguide.common.WebDataAdapter;
 import com.summertaker.sakamichiguide.data.MemberData;
 import com.summertaker.sakamichiguide.data.WebData;
-import com.summertaker.sakamichiguide.parser.YahooImageParser;
+import com.summertaker.sakamichiguide.parser.YahooParser;
 import com.summertaker.sakamichiguide.util.Util;
 
 import java.io.UnsupportedEncodingException;
@@ -138,8 +138,8 @@ public class MemberYahooFragment extends BaseFragment implements BaseFragmentInt
         //Log.e(mTag, ">>>>> parseList()");
         //Log.e(mTag, "url: " + url);
 
-        YahooImageParser yahooImageParser = new YahooImageParser();
-        yahooImageParser.parse(response, mWebDataList);
+        YahooParser yahooParser = new YahooParser();
+        yahooParser.parseImage(response, mWebDataList);
 
         renderData();
     }
@@ -149,7 +149,7 @@ public class MemberYahooFragment extends BaseFragment implements BaseFragmentInt
 
         mPbLoading.setVisibility(View.GONE);
 
-        WebDataAdapter listAdapter = new WebDataAdapter(mContext, R.layout.member_yahoo_item, 100, mWebDataList);
+        WebDataAdapter listAdapter = new WebDataAdapter(mContext, R.layout.member_detail_yahoo_item, 100, mWebDataList);
         mGridView.setVisibility(View.VISIBLE);
         //mGridView.setExpanded(true);
         mGridView.setAdapter(listAdapter);

@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/loPedia48"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/card_background"
+    android:orientation="vertical">
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/menu_divider" />
+
+    <LinearLayout
+        android:id="@+id/loPedia48Header"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/selector_menu_bar"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:paddingBottom="@dimen/menu_item_padding_bottom"
+        android:paddingEnd="@dimen/menu_item_padding_right"
+        android:paddingStart="@dimen/menu_item_padding_left"
+        android:paddingTop="@dimen/menu_item_padding_top">
+
+        <ImageView
+            android:layout_width="@dimen/menu_item_icon_width"
+            android:layout_height="@dimen/menu_item_icon_height"
+            android:layout_marginEnd="@dimen/menu_item_icon_spacing"
+            android:contentDescription="@string/blank"
+            android:src="@drawable/ic_wikipedia_48" />
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/akpedia"
+            android:textColor="@color/menu_text" />
+
+        <ImageView
+            android:layout_width="@dimen/menu_item_icon_width"
+            android:layout_height="@dimen/menu_item_icon_height"
+            android:contentDescription="@string/blank"
+            android:src="@drawable/ic_chevron_circle_right_light_gray_48" />
+    </LinearLayout>
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:contentDescription="@string/blank"
+        android:layerType="software"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
+        android:src="@drawable/dot" />
+
+    <RelativeLayout
+        android:id="@+id/loPedia48Loading"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:padding="50dp">
+
+        <ProgressBar
+            android:id="@+id/pbPedia48Loading"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/progress_bar_circle" />
+    </RelativeLayout>
+
+    <com.github.paolorotolo.expandableheightlistview.ExpandableHeightGridView
+        android:id="@+id/gvPedia48"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/card_background"
+        android:drawSelectorOnTop="true"
+        android:gravity="center"
+        android:horizontalSpacing="10dp"
+        android:listSelector="@drawable/selector_card"
+        android:numColumns="2"
+        android:padding="10dp"
+        android:scrollbars="none"
+        android:stretchMode="columnWidth"
+        android:verticalSpacing="10dp" />
+
+</LinearLayout>

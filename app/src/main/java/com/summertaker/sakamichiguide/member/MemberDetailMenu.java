@@ -243,12 +243,12 @@ public class MemberDetailMenu {
         menuDataList.add(menuData);
 
         // 야후 이미지 검색
-        url = "http://image.search.yahoo.co.jp/search?ei=UTF-8&dim=medium&p=" + query; // dim=large
+        /*url = "http://image.search.yahoo.co.jp/search?ei=UTF-8&dim=medium&p=" + query; // dim=large
         menuData = new MenuData();
         menuData.setId(Config.SITE_ID_YAHOO_IMAGE_SEARCH);
         menuData.setDrawable(R.drawable.ic_yahoo_japan_64);
         menuData.setTitle(mResources.getString(R.string.yahoo_image_search));
         menuData.setUrl(url);
-        menuDataList.add(menuData);
+        menuDataList.add(menuData);*/
     }
 }

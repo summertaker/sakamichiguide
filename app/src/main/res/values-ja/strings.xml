@@ -187,5 +187,6 @@
     <string name="puzzle">パズル</string>
     <string name="s_minute">%s分</string>
     <string name="s_second">%s秒</string>
+    <string name="akpedia">エケペディア</string>
 
 </resources>

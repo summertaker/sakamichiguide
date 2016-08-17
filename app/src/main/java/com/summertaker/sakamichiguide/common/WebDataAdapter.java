@@ -2,6 +2,7 @@ package com.summertaker.sakamichiguide.common;
 
 import android.content.Context;
 import android.graphics.Bitmap;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,6 +15,7 @@ import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.bumptech.glide.request.animation.GlideAnimation;
 import com.bumptech.glide.request.target.SimpleTarget;
+import com.squareup.picasso.Picasso;
 import com.summertaker.sakamichiguide.R;
 import com.summertaker.sakamichiguide.data.WebData;
 import com.summertaker.sakamichiguide.util.ImageUtil;
@@ -23,8 +25,6 @@ import java.util.ArrayList;
 
 public class WebDataAdapter extends BaseDataAdapter {
 
-    private String mTag;
-
     private Context mContext;
     private LayoutInflater mLayoutInflater;
     private ArrayList<WebData> mDataList;
@@ -32,7 +32,6 @@ public class WebDataAdapter extends BaseDataAdapter {
     private int mImageHeight;
 
     public WebDataAdapter(Context context, int layout, int imageHeight, ArrayList<WebData> dataList) {
-        this.mTag = "==========" + this.getClass().getSimpleName();
         this.mContext = context;
         this.mLayoutInflater = LayoutInflater.from(context);
         this.mItemLayout = layout;
@@ -66,10 +65,7 @@ public class WebDataAdapter extends BaseDataAdapter {
 
             holder.loLoading = (RelativeLayout) convertView.findViewById(R.id.loLoading);
             holder.pbLoading = (ProgressBar) convertView.findViewById(R.id.pbLoading);
-            if (holder.pbLoading != null) {
-                Util.setProgressBarColor(holder.pbLoading, 0, null);
-            }
-
+            Util.setProgressBarColor(holder.pbLoading, 0, null);
             holder.ivPicture = (ImageView) convertView.findViewById(R.id.ivPicture);
             //holder.tvTitle = (TextView) convertView.findViewById(R.id.tvTitle);
 
@@ -78,21 +74,21 @@ public class WebDataAdapter extends BaseDataAdapter {
             holder = (ViewHolder) convertView.getTag();
         }
 
-        String imageUrl = webData.getThumbnailUrl();
-        //Log.e(mTag, imageUrl);
+        final String imageUrl = webData.getThumbnailUrl();
+        //Log.e(mTag, "imageUrl: " + imageUrl);
 
         if (imageUrl == null || imageUrl.isEmpty()) {
             holder.loLoading.setVisibility(View.GONE);
             //holder.ivPicture.setImageResource(R.drawable.transparent);
         } else {
-            final String cacheId = Util.urlToId(imageUrl);
-            final String cacheUri = ImageUtil.getValidCacheUri(cacheId);
-            if (cacheUri != null) {
-                imageUrl = cacheUri;
-            }
+            //final String cacheId = Util.urlToId(imageUrl);
+            //final String cacheUri = ImageUtil.getValidCacheUri(cacheId);
+            //if (cacheUri != null) {
+            //    imageUrl = cacheUri;
+            //}
 
             // https://futurestud.io/blog/glide-callbacks-simpletarget-and-viewtarget-for-custom-view-classes
-            if (mImageHeight > 0) {
+            /*if (mImageHeight > 0) {
                 Glide.with(mContext).load(imageUrl).asBitmap().dontAnimate().diskCacheStrategy(DiskCacheStrategy.RESULT)
                         .override(mImageHeight, mImageHeight)
                         .into(new SimpleTarget<Bitmap>() {
@@ -102,10 +98,11 @@ public class WebDataAdapter extends BaseDataAdapter {
                                     holder.loLoading.setVisibility(View.GONE);
                                 }
                                 holder.ivPicture.setImageBitmap(bitmap);
+                                holder.ivPicture.setVisibility(View.VISIBLE);
 
-                                if (cacheUri == null) {
-                                    ImageUtil.saveBitmapToPng(bitmap, cacheId); // 캐쉬 저장
-                                }
+                                //if (cacheUri == null) {
+                                //    ImageUtil.saveBitmapToPng(bitmap, cacheId); // 캐쉬 저장
+                                //}
                             }
                         });
             } else {
@@ -117,16 +114,16 @@ public class WebDataAdapter extends BaseDataAdapter {
                                     holder.loLoading.setVisibility(View.GONE);
                                 }
                                 holder.ivPicture.setImageBitmap(bitmap);
+                                holder.ivPicture.setVisibility(View.VISIBLE);
 
-                                if (cacheUri == null) {
-                                    ImageUtil.saveBitmapToPng(bitmap, cacheId); // 캐쉬 저장
-                                }
+                                //if (cacheUri == null) {
+                                //    ImageUtil.saveBitmapToPng(bitmap, cacheId); // 캐쉬 저장
+                                //}
                             }
                         });
-            }
+            }*/
 
-            /*
-            Picasso.with(mContext).load(imageUrl).resize(100, 100).centerCrop().noFade().into(holder.ivPicture, new com.squareup.picasso.Callback() {
+            Picasso.with(mContext).load(imageUrl).noFade().into(holder.ivPicture, new com.squareup.picasso.Callback() {
                 @Override
                 public void onSuccess() {
                     holder.loLoading.setVisibility(View.GONE);
@@ -134,10 +131,10 @@ public class WebDataAdapter extends BaseDataAdapter {
                 }
                 @Override
                 public void onError() {
+                    Log.e(mTag, imageUrl);
                     holder.loLoading.setVisibility(View.GONE);
                 }
             });
-            */
 
             /*
             Picasso.with(mContext).load(imageUrl).resize(100, 100).centerCrop().noFade().into(new Target() {

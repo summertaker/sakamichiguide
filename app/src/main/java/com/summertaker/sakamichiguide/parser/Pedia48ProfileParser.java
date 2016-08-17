@@ -4,6 +4,7 @@ import com.summertaker.sakamichiguide.data.MemberData;
 import com.summertaker.sakamichiguide.data.WebData;
 import com.summertaker.sakamichiguide.util.Util;
 
+import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 
@@ -91,7 +92,11 @@ public class Pedia48ProfileParser extends BaseParser {
         }
     }
 
-    public void parseProfileImage(Document doc, ArrayList<WebData> dataList) {
+    public void parseProfileImage(String response, ArrayList<WebData> dataList) {
+        response = clean(response);
+        //Log.e(mTag, response);
+
+        Document doc = Jsoup.parse(response);
         Element ul = doc.select("ul.gallery").first();
 
         if (ul != null) {
@@ -114,10 +119,17 @@ public class Pedia48ProfileParser extends BaseParser {
                 }
                 //Log.e(mTag, "img.src: " + img.attr("data-cfsrc"));
                 String src = img.attr("src");
+                //Log.e(mTag, src);
 
                 // /images/thumb/2/26/2014年AKB48プロフィール_小嶋陽菜.jpg/99px-2014年AKB48プロフィール_小嶋陽菜.jpg
                 // /images/2/26/2014年AKB48プロフィール_小嶋陽菜.jpg
-                src = src.split(".jpg/")[0].replace("/thumb/", "/") + ".jpg";
+                String devider = ".jpg/";
+                if (src.contains(".jpeg/")) {
+                    devider = ".jpeg/";
+                } else if (src.contains(".png/")) {
+                    devider = ".png/";
+                }
+                src = src.split(devider)[0].replace("/thumb/", "/") + devider.replace("/", "");
                 src = mBaseUrl + src;
 
                 String caption = "";
@@ -133,6 +145,8 @@ public class Pedia48ProfileParser extends BaseParser {
                         caption = matcher.group(1).trim();
                     }
                 }
+
+                //Log.e(mTag, caption + " " + src);
 
                 WebData webData = new WebData();
                 webData.setTitle(caption);

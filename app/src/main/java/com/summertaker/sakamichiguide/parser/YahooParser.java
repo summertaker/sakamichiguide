@@ -8,11 +8,11 @@ import org.jsoup.nodes.Element;
 
 import java.util.ArrayList;
 
-public class YahooImageParser extends BaseParser {
+public class YahooParser extends BaseParser {
 
-    private String mTag = "YahooImageParser";
+    private String mTag = "YahooParser";
 
-    public void parse(String response, ArrayList<WebData> dataList) {
+    public void parseImage(String response, ArrayList<WebData> dataList) {
         response = clean(response);
         Document doc = Jsoup.parse(response);
 

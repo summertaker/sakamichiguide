@@ -187,5 +187,6 @@
     <string name="puzzle">퍼즐</string>
     <string name="s_minute">%s분</string>
     <string name="s_second">%s초</string>
+    <string name="akpedia">에이케이페디아</string>
 
 </resources>

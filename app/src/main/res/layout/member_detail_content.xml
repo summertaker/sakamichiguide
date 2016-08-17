@@ -65,6 +65,10 @@
 
             <include layout="@layout/member_detail_menu" />
 
+            <include layout="@layout/member_detail_yahoo" />
+
+            <include layout="@layout/member_detail_pedia48" />
+
         </LinearLayout>
 
     </ScrollView>

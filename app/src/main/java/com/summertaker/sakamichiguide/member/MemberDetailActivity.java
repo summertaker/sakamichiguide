@@ -10,6 +10,7 @@ import android.widget.AdapterView;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
+import android.widget.RelativeLayout;
 import android.widget.ScrollView;
 import android.widget.TextView;
 
@@ -18,14 +19,15 @@ import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
+import com.github.paolorotolo.expandableheightlistview.ExpandableHeightGridView;
 import com.github.paolorotolo.expandableheightlistview.ExpandableHeightListView;
 import com.squareup.picasso.Picasso;
 import com.summertaker.sakamichiguide.R;
 import com.summertaker.sakamichiguide.common.BaseActivity;
 import com.summertaker.sakamichiguide.common.BaseApplication;
 import com.summertaker.sakamichiguide.common.Config;
-import com.summertaker.sakamichiguide.common.OshimenManager;
 import com.summertaker.sakamichiguide.common.Setting;
+import com.summertaker.sakamichiguide.common.WebDataAdapter;
 import com.summertaker.sakamichiguide.data.GroupData;
 import com.summertaker.sakamichiguide.data.MemberData;
 import com.summertaker.sakamichiguide.data.MenuData;
@@ -33,9 +35,13 @@ import com.summertaker.sakamichiguide.data.TeamData;
 import com.summertaker.sakamichiguide.data.WebData;
 import com.summertaker.sakamichiguide.parser.BaseParser;
 import com.summertaker.sakamichiguide.parser.NamuwikiParser;
+import com.summertaker.sakamichiguide.parser.Pedia48ProfileParser;
+import com.summertaker.sakamichiguide.parser.YahooParser;
 import com.summertaker.sakamichiguide.util.Translator;
 import com.summertaker.sakamichiguide.util.Util;
 
+import java.io.UnsupportedEncodingException;
+import java.net.URLEncoder;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
@@ -58,14 +64,19 @@ public class MemberDetailActivity extends BaseActivity {
 
     private LinearLayout mLoLoading;
     private ProgressBar mPbPictureLoading;
+    private RelativeLayout mLoYahooLoading;
+    private RelativeLayout mLoPedia48Loading;
 
-    private ArrayList<WebData> mBlogList = new ArrayList<>();
+    private ArrayList<WebData> mYahooList = new ArrayList<>();
+    private ArrayList<WebData> mPedia48List = new ArrayList<>();
 
     //private CacheManager mCacheManager;
-    private OshimenManager mOshimenManager;
+    //private OshimenManager mOshimenManager;
 
     boolean isDataLoaded = false;
     boolean isWikiLoaded = false;
+
+    String mLocalGroupName;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -96,22 +107,7 @@ public class MemberDetailActivity extends BaseActivity {
                 title = title + " " + teamName;
             }
         }
-        /*String locale = Util.getLocaleStrng(MemberDetailActivity.this);
-        String name = null;
-        if ("KR".equals(locale)) {
-            name = mMemberData.getNameKo();
-        } else if ("JP".equals(locale)) {
-            name = mMemberData.getNameJa();
-        } else if ("ID".equals(locale)) {
-            name = mMemberData.getNameId();
-        } else if ("CN".equals(locale)) {
-            name = mMemberData.getNameCn();
-        }
-        if (name == null || name.isEmpty()) {
-            name = mMemberData.getName();
-        }
-        title = name + " / " + title;*/
-
+        title = mMemberData.getLocaleName() + " / " + title;
         initBaseToolbar(Config.TOOLBAR_ICON_BACK, title);
 
         //mBtFollow = (Button) findViewById(R.id.btFollow);
@@ -125,7 +121,24 @@ public class MemberDetailActivity extends BaseActivity {
         Util.setProgressBarColor(mPbPictureLoading, Config.PROGRESS_BAR_COLOR_NORMAL, null);
 
         //mCacheManager = new CacheManager(mSharedPreferences);
-        mOshimenManager = new OshimenManager(mSharedPreferences);
+        //mOshimenManager = new OshimenManager(mSharedPreferences);
+
+        mLoYahooLoading = (RelativeLayout) findViewById(R.id.loYahooLoading);
+        ProgressBar pbYahooLoading = (ProgressBar) findViewById(R.id.pbYahooLoading);
+        Util.setProgressBarColor(pbYahooLoading, Config.PROGRESS_BAR_COLOR_LIGHT, null);
+
+        mLoPedia48Loading = (RelativeLayout) findViewById(R.id.loPedia48Loading);
+        ProgressBar pbPedia48Loading = (ProgressBar) findViewById(R.id.pbPedia48Loading);
+        Util.setProgressBarColor(pbPedia48Loading, Config.PROGRESS_BAR_COLOR_LIGHT, null);
+
+        switch (mGroupData.getId()) {
+            case Config.GROUP_ID_NOGIZAKA46:
+                mLocalGroupName = "乃木坂46";
+                break;
+            case Config.GROUP_ID_KEYAKIZAKA46:
+                mLocalGroupName = "欅坂46";
+                break;
+        }
 
         loadProfile();
         loadNamuwiki();
@@ -209,6 +222,10 @@ public class MemberDetailActivity extends BaseActivity {
 
         if (url.contains("namu.wiki")) {
             parseNamuwiki(url, response);
+        } else if (url.contains("48pedia.org")) {
+            parsePedia48(url, response);
+        } else if (url.contains("yahoo.co.jp")) {
+            parseYahoo(url, response);
         } else {
             parseProfile(url, response);
         }
@@ -246,7 +263,7 @@ public class MemberDetailActivity extends BaseActivity {
             //----------------------------------------------------------------------------------
             Log.e(mTag, "ERROR: " + url);
             mLoLoading.setVisibility(View.GONE);
-            mOshimenManager.save(mMemberData); // 오시멘 지우기
+            //mOshimenManager.save(mMemberData); // 오시멘 지우기
             alertNetworkErrorAndFinish(mErrorMessage);
         } else {
             isDataLoaded = true;
@@ -615,7 +632,8 @@ public class MemberDetailActivity extends BaseActivity {
             }
         }
 
-        //renderBlog();
+        loadYahoo();
+        loadPedia48();
     }
 
     public void onMenuItemClick(MenuData menuData) {
@@ -663,6 +681,122 @@ public class MemberDetailActivity extends BaseActivity {
         //showToolbarProgressBar();
         overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
     }*/
+
+    private void loadYahoo() {
+        String query = mLocalGroupName + " " + mMemberData.getName().replace(" ", "");
+        try {
+            query = URLEncoder.encode(query, "utf-8");
+        } catch (UnsupportedEncodingException e) {
+            e.printStackTrace();
+        }
+        String url = "http://image.search.yahoo.co.jp/search?ei=UTF-8&dim=medium&p=" + query; // dim=large
+
+        requestData(url, Config.USER_AGENT_WEB);
+    }
+
+    private void parseYahoo(String url, String response) {
+        YahooParser yahooParser = new YahooParser();
+        yahooParser.parseImage(response, mYahooList);
+        //Log.e(mTag, "mYahooList.size(): " + mYahooList.size());
+
+        renderYahoo(url);
+    }
+
+    private void renderYahoo(final String url) {
+        mLoYahooLoading.setVisibility(View.GONE);
+
+        if (mYahooList.size() == 0) {
+            findViewById(R.id.loYahoo).setVisibility(View.GONE);
+        } else {
+            LinearLayout loYahooHeader = (LinearLayout) findViewById(R.id.loYahooHeader);
+            loYahooHeader.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(url));
+                    startActivityForResult(intent, 100);
+                    overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
+                }
+            });
+
+            WebDataAdapter adapter = new WebDataAdapter(mContext, R.layout.member_detail_yahoo_item, 100, mYahooList);
+            ExpandableHeightGridView gridView = (ExpandableHeightGridView) findViewById(R.id.gvYahoo);
+            gridView.setExpanded(true);
+            gridView.setFocusable(false);
+            gridView.setAdapter(adapter);
+            gridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                @Override
+                public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                /*WebData webData = (WebData) parent.getItemAtPosition(position);
+                Intent intent = new Intent(mContext, ImageViewActivity.class);
+                intent.putExtra("title", webData.getTitle());
+                intent.putExtra("url", webData.getUrl());
+                intent.putExtra("thumbnailUrl", webData.getThumbnailUrl());
+                intent.putExtra("imageUrl", webData.getImageUrl());
+                startActivityForResult(intent, 100);
+
+                overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
+                //goWebView(webData.getUrl(), mMemberData.getName());*/
+                }
+            });
+        }
+
+        /*mIsYahooLoaded = true;
+        if (mIsPedia48Loaded) {
+            loadProfile();
+            loadNamuwiki();
+        }*/
+    }
+
+    private void loadPedia48() {
+        String url = "http://48pedia.org/" + Util.removeSpace(mMemberData.getName());
+        requestData(url, Config.USER_AGENT_WEB);
+    }
+
+    private void parsePedia48(String url, String response) {
+        Pedia48ProfileParser pedia48ProfileParser = new Pedia48ProfileParser();
+        pedia48ProfileParser.parseProfileImage(response, mPedia48List);
+
+        renderPedia48(url);
+    }
+
+    private void renderPedia48(final String url) {
+        mLoPedia48Loading.setVisibility(View.GONE);
+
+        if (mPedia48List.size() == 0) {
+            findViewById(R.id.loPedia48).setVisibility(View.GONE);
+        } else {
+            LinearLayout loPedia48Header = (LinearLayout) findViewById(R.id.loPedia48Header);
+            loPedia48Header.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(url));
+                    startActivityForResult(intent, 100);
+                    overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
+                }
+            });
+
+            MemberDetailPedia48Adapter adapter = new MemberDetailPedia48Adapter(mContext, mPedia48List);
+            ExpandableHeightGridView gridView = (ExpandableHeightGridView) findViewById(R.id.gvPedia48);
+            if (gridView != null) {
+                gridView.setExpanded(true);
+                gridView.setFocusable(false);
+                gridView.setAdapter(adapter);
+                gridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                    @Override
+                    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                        //MenuData menuData = (MenuData) parent.getItemAtPosition(position);
+                        //onMenuItemClick(menuData);
+                    }
+                });
+            }
+        }
+
+        /*mIsPedia48Loaded = true;
+        if (mIsYahooLoaded) {
+            loadProfile();
+            loadNamuwiki();
+        }*/
+    }
 
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
