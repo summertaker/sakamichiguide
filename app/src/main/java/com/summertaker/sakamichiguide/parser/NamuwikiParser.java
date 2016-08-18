@@ -134,9 +134,7 @@ public class NamuwikiParser extends BaseParser {
                 memberData.setNameKo(nameKo);
                 memberData.setLocalName(localName);
                 memberData.setNoSpaceName(noSpaceName);
-                memberData.setNicknameKo(nickNameKo);
                 memberData.setBirth(birthday);
-                memberData.setHometown(hometown);
                 memberData.setGeneration(generation);
                 memberData.setNamuwikiUrl(namuwikiUrl);
                 memberData.setNamuwikiInfo(namuwikiInfo);
@@ -144,24 +142,26 @@ public class NamuwikiParser extends BaseParser {
                 //Log.e(mTag, "namuwikiInfo: " + namuwikiInfo);
 
                 if (namuwikiInfo != null) {
-                    if (namuwikiInfo.contains("부캡틴")) {
-                        memberData.setViceCaptain(true);
-                    } else if (namuwikiInfo.contains("캡틴")) {
-                        memberData.setCaptain(true); // 팀 캡틴
-                    } else if (namuwikiInfo.contains("부리더")) {
-                        memberData.setViceCaptain(true);
-                    } else if (namuwikiInfo.contains("리더")) {
-                        memberData.setCaptain(true);
-                    } else if (namuwikiInfo.contains("지배인")) {
-                        //Log.e(mTag, namuwikiInfo);
-                        memberData.setManager(true);
+                    String[] array = namuwikiInfo.split("\\,");
+                    for (String str : array) {
+                        String text = str.trim();
+                        //Log.e(mTag, nameKo + " / " + text);
+                        if (text.contains("부캡틴")) {
+                            memberData.setViceCaptain(true);
+                        } else if (text.contains("캡틴")) {
+                            memberData.setCaptain(true);
+                        } else if (text.contains("부리더")) {
+                            memberData.setViceCaptain(true);
+                        } else if (text.contains("리더")) {
+                            memberData.setCaptain(true);
+                        }
                     }
 
+                    if (namuwikiInfo.contains("지배인")) {
+                        memberData.setManager(true);
+                    }
                     if (namuwikiInfo.contains("총감독")) {
                         memberData.setGeneralManager(true);
-                    }
-                    if (namuwikiInfo.contains("겸임")) {
-                        memberData.setConcurrentPosition(true);
                     }
                 }
 
@@ -254,6 +254,7 @@ public class NamuwikiParser extends BaseParser {
                 if (localName.isEmpty()) {
                     continue;
                 }
+                localName = Util.replaceNamuwikiKanjiWithOfficial(localName);
                 noSpaceName = Util.removeSpace(localName);
 
                 el = el.nextElementSibling();
@@ -265,7 +266,7 @@ public class NamuwikiParser extends BaseParser {
                 namuwikiInfo = el.text().trim();
                 namuwikiInfo = namuwikiInfo.replaceAll("\\[[\\d+]\\]", "").trim();
 
-                //Log.e(mTag, nameKo + " / " + nameJa + " / " + birthday + " / " + generation + " / " + etc);
+                //Log.e(mTag, nameKo + " / " + localName + " / " + birthday + " / " + generation);
 
                 MemberData memberData = new MemberData();
                 memberData.setNameKo(nameKo);
@@ -275,9 +276,11 @@ public class NamuwikiParser extends BaseParser {
                 memberData.setGeneration(generation);
                 memberData.setNamuwikiUrl(namuwikiUrl);
                 memberData.setNamuwikiInfo(namuwikiInfo);
+
                 if (namuwikiInfo.contains("캡틴")) {
                     memberData.setCaptain(true);
                 }
+
                 memberList.add(memberData);
             }
         }

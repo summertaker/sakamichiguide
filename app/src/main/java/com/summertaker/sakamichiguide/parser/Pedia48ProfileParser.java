@@ -81,10 +81,6 @@ public class Pedia48ProfileParser extends BaseParser {
                             memberData.setNanagogoUrl(href);
                         } else if (href.contains("ameblo.jp")) {
                             memberData.setBlogUrl(href);
-                        } else {
-                            //if (text.contains("ブログ")) {
-                            //    memberData.setBlogUrl(href);
-                            //}
                         }
                     }
                 }

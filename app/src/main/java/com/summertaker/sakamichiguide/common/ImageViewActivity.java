@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -18,6 +19,7 @@ import com.bumptech.glide.request.RequestListener;
 import com.bumptech.glide.request.animation.GlideAnimation;
 import com.bumptech.glide.request.target.SimpleTarget;
 import com.bumptech.glide.request.target.Target;
+import com.squareup.picasso.Picasso;
 import com.summertaker.sakamichiguide.R;
 import com.summertaker.sakamichiguide.util.ImageUtil;
 import com.summertaker.sakamichiguide.util.Util;
@@ -62,11 +64,15 @@ public class ImageViewActivity extends BaseActivity {
                 }
             }
         }
+        if (mUrl == null || mUrl.isEmpty()) {
+            mUrl = mImageUrl;
+        }
+
         initBaseToolbar(Config.TOOLBAR_ICON_BACK, mTitle);
 
         mLoLoading = (LinearLayout) findViewById(R.id.loLoading);
         ProgressBar pbLoading = (ProgressBar) findViewById(R.id.pbLoading);
-        Util.setProgressBarColor(pbLoading, Config.PROGRESS_BAR_COLOR_NORMAL, null);
+        Util.setProgressBarColor(pbLoading, Config.PROGRESS_BAR_COLOR_LIGHT, null);
 
         // http://www.ryadel.com/en/android-proportionally-stretch-imageview-fit-whole-screen-width-maintaining-aspect-ratio/
         mImageView = (ImageView) findViewById(R.id.imageView);
@@ -78,8 +84,23 @@ public class ImageViewActivity extends BaseActivity {
             mImageUrl = cacheUri;
         }
 
+        Picasso.with(mContext).load(mImageUrl).into(mImageView, new com.squareup.picasso.Callback() {
+            @Override
+            public void onSuccess() {
+                mLoLoading.setVisibility(View.GONE);
+                mImageView.setVisibility(View.VISIBLE);
+            }
+
+            @Override
+            public void onError() {
+                Log.e(mTag, "Picasso.ERROR... " + mImageUrl);
+                mLoLoading.setVisibility(View.GONE);
+            }
+        });
+
+        // 캐쉬를 사용하는 경우
         // https://futurestud.io/blog/glide-callbacks-simpletarget-and-viewtarget-for-custom-view-classes
-        Glide.with(mContext).load(mImageUrl).asBitmap().dontAnimate().diskCacheStrategy(DiskCacheStrategy.RESULT)
+        /*Glide.with(mContext).load(mImageUrl).asBitmap().dontAnimate().diskCacheStrategy(DiskCacheStrategy.RESULT)
                 .listener(new RequestListener<String, Bitmap>() {
                     @Override
                     public boolean onException(Exception e, String model, Target<Bitmap> target, boolean isFirstResource) {
@@ -103,7 +124,7 @@ public class ImageViewActivity extends BaseActivity {
                             ImageUtil.saveBitmapToPng(bitmap, cacheId); // 캐쉬 저장
                         }
                     }
-                });
+                });*/
         /*
         ImageLoader.getInstance().displayImage(mImageUrl, mImageView, mDisplayImageOptions, new SimpleImageLoadingListener() {
             @Override
@@ -150,12 +171,12 @@ public class ImageViewActivity extends BaseActivity {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
+        int id = item.getItemId();
+        if (id == R.id.action_open_in_web_browser) {
+            goSite();
+            return true;
+        }
         return super.onOptionsItemSelected(item);
-    }
-
-    @Override
-    public void onActivityResult(int requestCode, int resultCode, Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
     }
 
     private void onError() {
@@ -214,12 +235,20 @@ public class ImageViewActivity extends BaseActivity {
 
     private void goSite() {
         Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(mUrl));
-        startActivity(intent);
+
+        startActivityForResult(intent, 100);
+        overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
     }
 
     @Override
     public void onBackPressed() { // only sdk 2.2 and higher supports
         doFinish();
         super.onBackPressed();
+    }
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
     }
 }

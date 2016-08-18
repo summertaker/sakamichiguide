@@ -41,6 +41,8 @@ import com.summertaker.sakamichiguide.data.GroupData;
 import com.summertaker.sakamichiguide.data.MemberData;
 import com.summertaker.sakamichiguide.data.TeamData;
 import com.summertaker.sakamichiguide.parser.BaseParser;
+import com.summertaker.sakamichiguide.parser.NamuwikiParser;
+import com.summertaker.sakamichiguide.parser.WikipediaEnParser;
 import com.summertaker.sakamichiguide.util.Util;
 
 import java.util.ArrayList;
@@ -61,7 +63,14 @@ public class PuzzleActivity extends BaseActivity {
     boolean mIsMobile = false;
     ArrayList<MemberData> mGroupMemberList = new ArrayList<>();
     ArrayList<MemberData> mMemberList = new ArrayList<>();
+    ArrayList<MemberData> mWikiMemberList = new ArrayList<>();
     ArrayList<TeamData> mTeamDataList = new ArrayList<>();
+
+    String mLocale;
+    BaseParser mWikiParser;
+
+    boolean mIsDataLoaded = false;
+    boolean mIsWikiLoaded = false;
 
     RelativeLayout mResultLayout;
     CountDownTimer mResultTimer;
@@ -218,6 +227,22 @@ public class PuzzleActivity extends BaseActivity {
         }
 
         requestData(url, userAgent);
+
+        mLocale = Util.getLocaleStrng(mContext);
+        switch (mLocale) {
+            case "KR":
+                mWikiParser = new NamuwikiParser();
+                break;
+            default:
+                mWikiParser = new WikipediaEnParser();
+                break;
+        }
+        String mWikiUrl = mWikiParser.getUrl(mGroupData.getId());
+        if (mWikiUrl == null || mWikiUrl.isEmpty()) {
+            mIsWikiLoaded = true;
+        } else {
+            requestData(mWikiUrl, Config.USER_AGENT_WEB);
+        }
     }
 
     /**
@@ -262,24 +287,56 @@ public class PuzzleActivity extends BaseActivity {
     }
 
     private void parseData(String url, String response) {
-        BaseParser baseParser = new BaseParser();
-        baseParser.parseMemberList(response, mGroupData, mGroupMemberList, mTeamDataList, mIsMobile);
-
+        if (url.contains("wiki")) {
+            mWikiParser.parse46List(response, mGroupData, mWikiMemberList);
+            mIsWikiLoaded = true;
+        } else {
+            BaseParser baseParser = new BaseParser();
+            baseParser.parseMemberList(response, mGroupData, mGroupMemberList, mTeamDataList, mIsMobile);
+            mIsDataLoaded = true;
+        }
         renderData();
     }
 
-    private void renderData() {
-        //mPbLoading.setVisibility(View.GONE);
+    private void updateData() {
+        for (MemberData memberData : mMemberList) {
+            if (mWikiMemberList.size() == 0) {
+                memberData.setLocaleName(memberData.getName()); //memberData.getNameEn();
+            } else {
+                for (MemberData wikiData : mWikiMemberList) {
+                    //Log.e(mTag, memberData.getNoSpaceName() + " = " + wikiData.getNoSpaceName());
+                    if (Util.isEqualString(memberData.getNoSpaceName(), wikiData.getNoSpaceName())) {
+                        String localeName;
+                        switch (mLocale) {
+                            case "KR":
+                                localeName = wikiData.getNameKo();
+                                break;
+                            default:
+                                localeName = wikiData.getNameEn();
+                                break;
+                        }
+                        if (localeName == null || localeName.isEmpty()) {
+                            localeName = memberData.getName();
+                        }
+                        //Log.e(mTag, "localeName: " + localeName);
+                        memberData.setLocaleName(localeName);
+                        break;
+                    } else {
+                        memberData.setLocaleName(memberData.getName()); //memberData.getNameEn();
+                    }
+                }
+            }
+        }
+    }
 
-        //String team = getString(R.string.team);
-        //String trainee = getString(R.string.trainee);
+    private void renderData() {
+        if (!mIsWikiLoaded || !mIsDataLoaded) {
+            return;
+        }
 
         if (mGroupMemberList.size() == 0) {
             alertNetworkErrorAndFinish(mErrorMessage);
         } else {
-            //LinearLayout grid = (LinearLayout) findViewById(R.id.grid);
-            //grid.setVisibility(View.VISIBLE);
-
             Collections.shuffle(mGroupMemberList);
 
             int count = 0;
@@ -289,12 +346,14 @@ public class PuzzleActivity extends BaseActivity {
 
                 MemberData data1 = new MemberData();
                 data1.setName(oldData.getName());
+                data1.setNoSpaceName(oldData.getNoSpaceName());
                 data1.setThumbnailUrl(oldData.getThumbnailUrl());
                 mMemberList.add(data1);
                 count++;
 
                 MemberData data2 = new MemberData();
                 data2.setName(oldData.getName());
+                data2.setNoSpaceName(oldData.getNoSpaceName());
                 data2.setThumbnailUrl(oldData.getThumbnailUrl());
                 mMemberList.add(data2);
                 count++;
@@ -303,6 +362,8 @@ public class PuzzleActivity extends BaseActivity {
             Collections.shuffle(mMemberList);
             Collections.shuffle(mMemberList);
             Collections.shuffle(mMemberList);
+
+            updateData();
 
             for (int i = 0; i < mCardTotal; i++) {
 
@@ -314,7 +375,7 @@ public class PuzzleActivity extends BaseActivity {
                 mImageViews[index].setTag(memberData);
 
                 if (!mLevel.equals(Config.PUZZLE_LEVEL_HARD)) {
-                    mTextViews[index].setText(memberData.getName());
+                    mTextViews[index].setText(memberData.getLocaleName());
                 }
 
                 String imageUrl = memberData.getThumbnailUrl();

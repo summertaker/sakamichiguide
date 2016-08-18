@@ -133,6 +133,16 @@ public class Util {
         return local.equals(wiki);
     }
 
+    public static String replaceNamuwikiKanjiWithOfficial(String source) {
+        String result = source;
+
+        result = result.replace("中田花菜", "中田花奈"); // Nogizaka46
+        result = result.replace("山﨑怜奈", "山崎怜奈"); // Nogizaka46
+        result = result.replace("川後陽奈", "川後陽菜"); // Nogizaka46
+
+        return result;
+    }
+
     public static boolean isEqualString(String localName, String wikiName) {
         //boolean result = false;
 
