@@ -151,6 +151,11 @@ public class BirthMonthActivity extends BaseActivity {
 
     private void refineData() {
 
+        if (mMemberDataList.size() == 0) {
+            alertParseErrorAndFinish(null);
+            return;
+        }
+
         //ArrayList<String> monthList = new ArrayList<>();
         int[] counts = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
 
@@ -158,9 +163,13 @@ public class BirthMonthActivity extends BaseActivity {
             String birthday = memberData.getBirthday();
             String month = birthday.substring(4, 6);
             //monthList.add(month);
+            //Log.e(mTag, "month: "+ month);
 
-            int monthNumber = Integer.parseInt(month) - 1;
-            counts[monthNumber]++;
+            int monthNo = Integer.parseInt(month) - 1;
+            if (monthNo >= 12) {
+                continue;
+            }
+            counts[monthNo]++;
         }
 
         //Arrays.sort(counts);
