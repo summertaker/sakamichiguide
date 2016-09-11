@@ -33,6 +33,7 @@ import com.android.volley.toolbox.StringRequest;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.animation.GlideAnimation;
 import com.bumptech.glide.request.target.SimpleTarget;
+import com.squareup.picasso.Picasso;
 import com.summertaker.sakamichiguide.R;
 import com.summertaker.sakamichiguide.common.BaseActivity;
 import com.summertaker.sakamichiguide.common.BaseApplication;
@@ -380,7 +381,28 @@ public class PuzzleActivity extends BaseActivity {
                 }
 
                 String imageUrl = memberData.getThumbnailUrl();
-                final String cacheId = Util.urlToId(imageUrl);
+
+                Picasso.with(mContext).load(imageUrl).into(mImageViews[index], new com.squareup.picasso.Callback() {
+                    @Override
+                    public void onSuccess() {
+                        Bitmap bitmap = ((BitmapDrawable) mImageViews[index].getDrawable()).getBitmap();
+                        mTransitions[index] = new TransitionDrawable(new Drawable[]{
+                                ContextCompat.getDrawable(mContext, mCardBackground),
+                                new BitmapDrawable(getResources(), bitmap)
+                        });
+                        mImageViews[index].setImageDrawable(mTransitions[index]);
+
+                        mCardCount++;
+                        onImageLoaded();
+                    }
+
+                    @Override
+                    public void onError() {
+                        alertNetworkErrorAndFinish(null);
+                    }
+                });
+
+                /*final String cacheId = Util.urlToId(imageUrl);
                 final String cacheUri = ImageUtil.getValidCacheUri(cacheId);
                 if (cacheUri != null) {
                     imageUrl = cacheUri;
@@ -410,7 +432,7 @@ public class PuzzleActivity extends BaseActivity {
                                     ImageUtil.saveBitmapToPng(bitmap, cacheId); // 캐쉬 저장
                                 }
                             }
-                        });
+                        });*/
 
                 /*Picasso.with(mContext).load(imageUrl).into(mImageViews[index], new com.squareup.picasso.Callback() {
                     @Override
