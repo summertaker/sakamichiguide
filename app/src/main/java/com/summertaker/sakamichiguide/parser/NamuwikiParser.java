@@ -1,5 +1,7 @@
 package com.summertaker.sakamichiguide.parser;
 
+import android.util.Log;
+
 import com.summertaker.sakamichiguide.common.Config;
 import com.summertaker.sakamichiguide.data.GroupData;
 import com.summertaker.sakamichiguide.data.MemberData;
@@ -277,7 +279,9 @@ public class NamuwikiParser extends BaseParser {
                 memberData.setNamuwikiUrl(namuwikiUrl);
                 memberData.setNamuwikiInfo(namuwikiInfo);
 
-                if (namuwikiInfo.contains("캡틴")) {
+                if (namuwikiInfo.contains("부캡틴")) {
+                    memberData.setViceCaptain(true);
+                } else if (namuwikiInfo.contains("캡틴")) {
                     memberData.setCaptain(true);
                 }
 

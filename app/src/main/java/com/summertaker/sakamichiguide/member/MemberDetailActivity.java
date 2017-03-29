@@ -689,7 +689,7 @@ public class MemberDetailActivity extends BaseActivity {
         } catch (UnsupportedEncodingException e) {
             e.printStackTrace();
         }
-        String url = "http://image.search.yahoo.co.jp/search?ei=UTF-8&dim=medium&p=" + query; // dim=large
+        String url = "https://search.yahoo.co.jp/image/search?ei=UTF-8&dim=medium&p=" + query; // dim=large
 
         requestData(url, Config.USER_AGENT_WEB);
     }

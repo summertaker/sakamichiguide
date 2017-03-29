@@ -90,12 +90,14 @@ public class Keyakizaka46Parser extends BaseParser {
                 profileUrl = a.attr("href");
                 profileUrl = "http://www.keyakizaka46.com" + profileUrl;
 
+                // http://cdn.keyakizaka46.com/images/14/0cc/b96bd60c3ee8b9d2670aae2604879/400_320_102400.jpg
                 Element img = a.select("img").first();
                 if (img == null) {
                     continue;
                 }
                 thumbnailUrl = img.attr("src");
-                thumbnailUrl = "http://www.keyakizaka46.com" + thumbnailUrl;
+                //Log.e(mTag, thumbnailUrl);
+                //thumbnailUrl = "http://www.keyakizaka46.com" + thumbnailUrl;
 
                 Element p_name = a.select("p.name").first();
                 if (p_name == null) {
@@ -185,8 +187,9 @@ public class Keyakizaka46Parser extends BaseParser {
         if (img == null) {
             return hashMap;
         }
-        String imageUrl = "http://www.keyakizaka46.com" + img.attr("src");
+        String imageUrl = img.attr("src");
         //Log.e(mTag, "imageUrl: " + imageUrl);
+        //imageUrl = "http://www.keyakizaka46.com" + imageUrl;
         hashMap.put("imageUrl", imageUrl);
 
         Element root = doc.select(".box-profile_text").first();
@@ -305,7 +308,7 @@ public class Keyakizaka46Parser extends BaseParser {
             // http://www.keyakizaka46.com/img/14/orig/k46o/201/604/201604-02_jpg.jpg
             // http://www.keyakizaka46.com/img/14/orig/k46o/201/604/201604-02__400_320_102400_jpg.jpg
             src = src.replace("_jpg.jpg", "__400_320_102400_jpg.jpg");
-            String imageUrl = "http://www.keyakizaka46.com" + src;
+            String imageUrl = src; //"http://www.keyakizaka46.com" + src;
 
             Element p = a.select(".name").first();
             String name = p.text().trim();
@@ -423,7 +426,7 @@ public class Keyakizaka46Parser extends BaseParser {
 
             for (Element img : el.select("img")) {
                 String src = img.attr("src");
-                src = "http://www.keyakizaka46.com" + src;
+                //src = "http://www.keyakizaka46.com" + src;
 
                 thumbnailUrl += src + "*";
                 imageUrl += thumbnailUrl + "*";

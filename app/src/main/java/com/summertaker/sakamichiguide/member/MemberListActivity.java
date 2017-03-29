@@ -241,9 +241,9 @@ public class MemberListActivity extends BaseActivity {
                             memberData.setLocaleName(localeName);
                             memberData.setGeneralManager(wikiData.isGeneralManager());         // 총감독
                             memberData.setManager(wikiData.isManager());                       // 지배인
-                            memberData.setGeneralCaptain(wikiData.isGeneralCaptain());         // 그룹 캡틴
-                            memberData.setCaptain(wikiData.isCaptain());                       // 캡틴,리더
                             memberData.setViceCaptain(wikiData.isViceCaptain());               // 부캡틴,부리더
+                            memberData.setGeneralCaptain(wikiData.isGeneralCaptain());         // 그룹캡틴
+                            memberData.setCaptain(wikiData.isCaptain());                       // 캡틴,리더
                             memberData.setConcurrentPosition(wikiData.isConcurrentPosition()); // 겸임
                             memberData.setGeneration(wikiData.getGeneration());
                             memberData.setBirthday(wikiData.getBirthday());

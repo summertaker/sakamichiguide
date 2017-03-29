@@ -139,27 +139,11 @@ public class MemberGridAdapter extends BaseDataAdapter {
             holder.tvGeneralManager.setVisibility(View.GONE);
         }
 
-        // 그룹 캡틴
-        if (memberData.isGeneralCaptain()) {
-            holder.tvGeneralCaptain.setText(mGeneralCaptain);
-            holder.tvGeneralCaptain.setVisibility(View.VISIBLE);
-        } else {
-            holder.tvGeneralCaptain.setVisibility(View.GONE);
-        }
-
         // 지배인
         if (memberData.isManager()) {
             holder.tvManager.setVisibility(View.VISIBLE);
         } else {
             holder.tvManager.setVisibility(View.GONE);
-        }
-
-        // 캡틴,리더
-        if (memberData.isCaptain()) {
-            holder.tvCaptain.setText(mCaptain);
-            holder.tvCaptain.setVisibility(View.VISIBLE);
-        } else {
-            holder.tvCaptain.setVisibility(View.GONE);
         }
 
         // 부캡틴,부리더
@@ -168,6 +152,22 @@ public class MemberGridAdapter extends BaseDataAdapter {
             holder.tvViceCaptain.setVisibility(View.VISIBLE);
         } else {
             holder.tvViceCaptain.setVisibility(View.GONE);
+        }
+
+        // 그룹 캡틴
+        if (memberData.isGeneralCaptain()) {
+            holder.tvGeneralCaptain.setText(mGeneralCaptain);
+            holder.tvGeneralCaptain.setVisibility(View.VISIBLE);
+        } else {
+            holder.tvGeneralCaptain.setVisibility(View.GONE);
+        }
+
+        // 캡틴,리더
+        if (memberData.isCaptain()) {
+            holder.tvCaptain.setText(mCaptain);
+            holder.tvCaptain.setVisibility(View.VISIBLE);
+        } else {
+            holder.tvCaptain.setVisibility(View.GONE);
         }
 
         // 겸임
